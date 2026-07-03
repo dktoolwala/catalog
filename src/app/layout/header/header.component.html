@@ -1,0 +1,58 @@
+<header class="header" role="banner">
+  <div class="header__inner">
+    <!-- Mobile menu toggle -->
+    <button
+      class="header__menu-btn"
+      aria-label="Open navigation menu"
+      (click)="menuToggle.emit()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- App branding -->
+    <a [routerLink]="routes.HOME" class="header__brand">
+      <span class="header__logo">
+        <mat-icon class="header__logo-icon">storefront</mat-icon>
+      </span>
+      <span class="header__title">{{ appTitle }}</span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="header__nav" aria-label="Main navigation">
+      <a
+        [routerLink]="routes.HOME"
+        routerLinkActive="header__nav-link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="header__nav-link"
+      >
+        Home
+      </a>
+      <a
+        [routerLink]="routes.PRODUCTS"
+        routerLinkActive="header__nav-link--active"
+        class="header__nav-link"
+      >
+        Products
+      </a>
+      <a
+        [routerLink]="routes.CATEGORIES"
+        routerLinkActive="header__nav-link--active"
+        class="header__nav-link"
+      >
+        Categories
+      </a>
+    </nav>
+
+    <span class="header__spacer"></span>
+
+    <!-- Search entry point -->
+    <a
+      [routerLink]="routes.SEARCH"
+      class="header__search-btn"
+      aria-label="Search products"
+    >
+      <mat-icon>search</mat-icon>
+      <span class="header__search-text">Search</span>
+    </a>
+  </div>
+</header>

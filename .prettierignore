@@ -1,0 +1,14 @@
+# Prettier Ignore
+dist/
+node_modules/
+coverage/
+.angular/
+package-lock.json
+pnpm-lock.yaml
+*.ico
+*.png
+*.jpg
+*.webp
+*.woff
+*.woff2
+ngsw-config.json

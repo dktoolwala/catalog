@@ -1,0 +1,11 @@
+<div class="category-grid" role="list" aria-label="Categories">
+  @for (item of categories(); track item.category.id) {
+    <div class="category-grid__item" role="listitem">
+      <app-category-card
+        [category]="item.category"
+        [productCount]="item.productCount"
+        (selected)="categorySelected.emit($event)"
+      />
+    </div>
+  }
+</div>

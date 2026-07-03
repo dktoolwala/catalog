@@ -1,0 +1,19 @@
+<nav class="category-sidebar" aria-label="Category navigation">
+  <ul class="category-sidebar__list" role="list">
+    @for (item of categories(); track item.category.id) {
+      <li class="category-sidebar__item" role="listitem">
+        <a
+          class="category-sidebar__link"
+          [routerLink]="['/categories', item.category.id]"
+          routerLinkActive="category-sidebar__link--active"
+          [attr.aria-label]="item.category.name + ' — ' + item.productCount + ' products'"
+          [attr.aria-current]="activeCategoryId() === item.category.id ? 'page' : null"
+        >
+          <mat-icon class="category-sidebar__icon" aria-hidden="true">folder</mat-icon>
+          <span class="category-sidebar__name">{{ item.category.name }}</span>
+          <span class="category-sidebar__badge" aria-hidden="true">{{ item.productCount }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

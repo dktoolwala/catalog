@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.category-products-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+
+  &__sidebar {
+    position: sticky;
+    top: calc(var(--header-height, 72px) + 24px);
+    align-self: start;
+  }
+
+  &__content {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 959.98px) {
+  .category-products-layout {
+    grid-template-columns: 1fr;
+
+    &__sidebar {
+      position: static;
+    }
+  }
+}

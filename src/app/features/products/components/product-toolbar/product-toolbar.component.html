@@ -1,0 +1,11 @@
+<div class="product-toolbar" role="status" aria-live="polite">
+  @if (filteredCount() === totalCount()) {
+    <span class="product-toolbar__count">
+      {{ totalCount() }} {{ totalCount() === 1 ? 'product' : 'products' }}
+    </span>
+  } @else {
+    <span class="product-toolbar__count">
+      Showing {{ filteredCount() }} of {{ totalCount() }} products
+    </span>
+  }
+</div>

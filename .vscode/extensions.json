@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "nrwl.angular-console",
+    "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker",
+    "gruntfuggly.todo-tree",
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+    "bradlc.vscode-tailwindcss",
+    "pkief.material-icon-theme"
+  ]
+}

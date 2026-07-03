@@ -1,0 +1,48 @@
+{
+  "name": "Product Catalog",
+  "short_name": "Catalog",
+  "description": "Browse and discover our complete product catalog",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1976d2",
+  "orientation": "any",
+  "scope": "./",
+  "lang": "en",
+  "categories": ["shopping", "business"],
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Browse Products",
+      "short_name": "Products",
+      "url": "./products",
+      "icons": [{ "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Search Products",
+      "short_name": "Search",
+      "url": "./search",
+      "icons": [{ "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Browse Categories",
+      "short_name": "Categories",
+      "url": "./categories",
+      "icons": [{ "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="icon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#bg)" width="400" height="300" rx="8"/>
+  <g transform="translate(160, 90)">
+    <rect x="0" y="0" width="80" height="80" rx="16" fill="none" stroke="url(#icon)" stroke-width="2.5" opacity="0.6"/>
+    <circle cx="25" cy="28" r="9" fill="none" stroke="url(#icon)" stroke-width="2" opacity="0.5"/>
+    <path d="M8 62 l22-20 12 10 16-22 22 32 H8z" fill="url(#icon)" opacity="0.15" stroke="none"/>
+    <path d="M8 62 l22-20 12 10 16-22 22 32" fill="none" stroke="url(#icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  </g>
+  <text x="200" y="210" text-anchor="middle" fill="#94a3b8" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="500" letter-spacing="0.5">No Image Available</text>
+  <rect x="170" y="222" width="60" height="2" rx="1" fill="#cbd5e1" opacity="0.5"/>
+</svg>

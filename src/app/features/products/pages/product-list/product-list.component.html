@@ -1,0 +1,51 @@
+<app-page-header
+  title="Products"
+  subtitle="Browse our complete catalog"
+/>
+
+<!-- Filters -->
+<app-product-filters
+  [categories]="state.categories()"
+  [selectedCategory]="state.selectedCategory()"
+  (searchChange)="state.setSearchTerm($event)"
+  (categoryChange)="state.setSelectedCategory($event)"
+/>
+
+<!-- Loading -->
+@if (state.loading()) {
+  <app-loading-spinner />
+}
+
+<!-- Error -->
+@if (state.error() && !state.loading()) {
+  <app-error-state (retry)="onRetry()" />
+}
+
+<!-- Content -->
+@if (!state.loading() && !state.error()) {
+  @if (state.filteredProducts().length > 0) {
+    <app-product-toolbar
+      [filteredCount]="state.productCount()"
+      [totalCount]="state.totalCount()"
+    />
+
+    <app-product-grid
+      [products]="state.filteredProducts()"
+      (productSelected)="onProductSelected($event)"
+    />
+  } @else if (state.products().length > 0) {
+    <!-- Products exist but filters returned empty -->
+    <app-empty-state
+      title="No matching products"
+      message="Try adjusting your search or category filter."
+      icon="filter_list_off"
+    />
+  } @else {
+    <!-- No products at all -->
+    <app-empty-state
+      title="No products yet"
+      message="Products will appear here once they are added to the catalog."
+      icon="inventory_2"
+    />
+  }
+}

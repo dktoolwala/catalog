@@ -1,0 +1,70 @@
+<!-- Back button -->
+<button class="detail__back" aria-label="Go back" (click)="goBack()">
+  <mat-icon>arrow_back</mat-icon>
+  Back
+</button>
+
+@if (state.selectedProduct(); as product) {
+  <article class="detail">
+    <div class="detail__image-section">
+      <app-product-image
+        [src]="product.imageUrls[0]"
+        [alt]="product.name"
+        aspectRatio="1 / 1"
+      />
+    </div>
+
+    <div class="detail__info-section">
+      <mat-chip class="detail__category">{{ product.categoryName }}</mat-chip>
+
+      <h1 class="detail__name">{{ product.name }}</h1>
+
+      <p class="detail__price">{{ product.price | currencyFormat }}</p>
+
+      @if (product.description) {
+        <p class="detail__description">{{ product.description }}</p>
+      }
+
+      <div class="detail__actions">
+        @if (product.whatsappNumber) {
+          <a
+            mat-flat-button
+            color="primary"
+            [href]="getWhatsAppUrl(product.whatsappNumber, product.name)"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <mat-icon>chat</mat-icon>
+            Enquire on WhatsApp
+          </a>
+        }
+      </div>
+
+      <dl class="detail__meta">
+        <div class="detail__meta-item">
+          <dt>SKU</dt>
+          <dd>{{ product.sku }}</dd>
+        </div>
+        <div class="detail__meta-item">
+          <dt>Category</dt>
+          <dd>{{ product.categoryName }}</dd>
+        </div>
+      </dl>
+    </div>
+  </article>
+} @else if (state.error()) {
+  <app-empty-state
+    title="Product not found"
+    message="The product you're looking for doesn't exist or has been removed."
+    icon="search_off"
+    actionLabel="Browse Products"
+    (actionClick)="goBack()"
+  />
+} @else {
+  <!-- Loading state handled by resolver; this is a fallback -->
+  <app-empty-state
+    title="Loading..."
+    message="Please wait while we load product details."
+    icon="hourglass_empty"
+  />
+}

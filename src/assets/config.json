@@ -1,0 +1,14 @@
+{
+  "apiUrl": "https://script.google.com/macros/s/AKfycbz1SkY1eunuAdLMyzFW4BbG-fwIVx6VKbl6BHk1lA9jcU9Bzw9ERc674TmNKeE2-QvcXg/exec",
+  "production": true,
+  "logLevel": "error",
+  "appTitle": "DK Tools",
+  "appDescription": "Browse and discover our complete product catalog",
+  "baseUrl": "https://YOUR_USERNAME.github.io/product-catalog",
+  "imageBaseUrl": "https://drive.google.com/thumbnail",
+  "features": {
+    "pwa": true,
+    "analytics": true,
+    "structuredData": true
+  }
+}

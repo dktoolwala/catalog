@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+
+  &__item {
+    display: flex;
+    min-width: 0;
+
+    app-product-card {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 599.98px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 399.98px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

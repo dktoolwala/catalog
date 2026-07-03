@@ -1,0 +1,19 @@
+<header class="page-header">
+  <div class="page-header__breadcrumbs">
+    <ng-content select="[breadcrumbs]" />
+  </div>
+
+  <div class="page-header__content">
+    <div class="page-header__text">
+      <h1 class="page-header__title">{{ title() }}</h1>
+
+      @if (subtitle()) {
+        <p class="page-header__subtitle">{{ subtitle() }}</p>
+      }
+    </div>
+
+    <div class="page-header__actions">
+      <ng-content select="[actions]" />
+    </div>
+  </div>
+</header>

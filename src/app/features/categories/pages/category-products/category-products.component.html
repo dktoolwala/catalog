@@ -1,0 +1,55 @@
+@if (state.selectedCategory(); as category) {
+  <app-page-header
+    [title]="category.name"
+    subtitle="Browse products in this category"
+  />
+} @else {
+  <app-page-header
+    title="Category"
+    subtitle="Loading..."
+  />
+}
+
+<div class="category-products-layout">
+  <!-- Sidebar -->
+  <aside class="category-products-layout__sidebar">
+    <app-category-sidebar
+      [categories]="state.categoriesWithCounts()"
+      [activeCategoryId]="state.selectedCategoryId()"
+    />
+  </aside>
+
+  <!-- Main content -->
+  <main class="category-products-layout__content">
+    <!-- Loading -->
+    @if (state.productsLoading()) {
+      <app-loading-spinner />
+    }
+
+    <!-- Error -->
+    @if (state.productsError() && !state.productsLoading()) {
+      <app-error-state (retry)="onRetry()" />
+    }
+
+    <!-- Content -->
+    @if (!state.productsLoading() && !state.productsError()) {
+      @if (state.products().length > 0) {
+        <app-product-toolbar
+          [filteredCount]="state.productCount()"
+          [totalCount]="state.productCount()"
+        />
+
+        <app-product-grid
+          [products]="state.products()"
+          (productSelected)="onProductSelected($event)"
+        />
+      } @else {
+        <app-empty-state
+          title="No products in this category"
+          message="Products will appear here once they are assigned to this category."
+          icon="inventory_2"
+        />
+      }
+    }
+  </main>
+</div>

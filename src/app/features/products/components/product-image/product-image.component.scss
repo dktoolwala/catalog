@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.product-image {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio fallback */
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

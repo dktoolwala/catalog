@@ -1,0 +1,25 @@
+<article
+  class="category-card"
+  tabindex="0"
+  [attr.aria-label]="category().name + ' — ' + productCount() + ' products'"
+  (click)="onActivate()"
+  (keydown)="onKeydown($event)"
+  [style.--card-color]="getCardColor()"
+>
+  <div class="category-card__visual">
+    <img
+      [src]="getCategoryImage()"
+      [alt]="category().name"
+      class="category-card__img"
+    />
+  </div>
+  <div class="category-card__content">
+    <h3 class="category-card__name">{{ category().name }}</h3>
+    <p class="category-card__count">
+      {{ productCount() }} {{ productCount() === 1 ? 'product' : 'products' }}
+    </p>
+  </div>
+  <div class="category-card__arrow">
+    <mat-icon>arrow_forward</mat-icon>
+  </div>
+</article>

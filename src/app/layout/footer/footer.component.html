@@ -1,0 +1,66 @@
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <!-- Brand & About -->
+    <div class="footer__section footer__brand">
+      <span class="footer__logo">{{ settings()?.companyName || 'DK Tools' }}</span>
+      <p class="footer__tagline">{{ settings()?.companyTagline || 'Quality tools for every need.' }}</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer__section footer__nav-section">
+      <h4 class="footer__heading">Quick Links</h4>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a routerLink="/">Home</a>
+        <a routerLink="/products">Products</a>
+        <a routerLink="/categories">Categories</a>
+        <a routerLink="/search">Search</a>
+      </nav>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer__section footer__contact">
+      <h4 class="footer__heading">Contact Us</h4>
+      <ul class="footer__contact-list">
+        @if (settings()?.supportPhone) {
+          <li>
+            <mat-icon>phone</mat-icon>
+            <a [href]="'tel:' + settings()!.supportPhone">{{ settings()!.supportPhone }}</a>
+          </li>
+        }
+        @if (settings()?.whatsappNumber) {
+          <li>
+            <mat-icon>chat</mat-icon>
+            <a [href]="'https://wa.me/' + settings()!.whatsappNumber" target="_blank" rel="noopener">WhatsApp</a>
+          </li>
+        }
+        @if (settings()?.supportEmail) {
+          <li>
+            <mat-icon>email</mat-icon>
+            <a [href]="'mailto:' + settings()!.supportEmail">{{ settings()!.supportEmail }}</a>
+          </li>
+        }
+        @if (settings()?.address) {
+          <li>
+            <mat-icon>location_on</mat-icon>
+            <span>{{ settings()!.address }}</span>
+          </li>
+        }
+        @if (getMapUrl()) {
+          <li>
+            <a class="footer__map-btn" [href]="getMapUrl()" target="_blank" rel="noopener">
+              <mat-icon>map</mat-icon>
+              <span>View on Google Maps</span>
+              <mat-icon class="footer__map-btn-arrow">open_in_new</mat-icon>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer__bottom">
+      <span class="footer__copyright">&copy; {{ currentYear }} {{ settings()?.companyName || 'DK Tools' }}. All rights reserved.</span>
+      <span class="footer__version">v{{ appVersion }}</span>
+    </div>
+  </div>
+</footer>

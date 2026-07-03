@@ -1,0 +1,30 @@
+<app-page-header
+  title="Categories"
+  subtitle="Browse products by category"
+/>
+
+<!-- Loading -->
+@if (state.loading()) {
+  <app-loading-spinner />
+}
+
+<!-- Error -->
+@if (state.error() && !state.loading()) {
+  <app-error-state (retry)="onRetry()" />
+}
+
+<!-- Content -->
+@if (!state.loading() && !state.error()) {
+  @if (state.categoriesWithCounts().length > 0) {
+    <app-category-grid
+      [categories]="state.categoriesWithCounts()"
+      (categorySelected)="onCategorySelected($event)"
+    />
+  } @else {
+    <app-empty-state
+      title="No categories yet"
+      message="Categories will appear here once they are configured in the catalog."
+      icon="category"
+    />
+  }
+}

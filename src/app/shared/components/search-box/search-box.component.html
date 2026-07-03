@@ -1,0 +1,26 @@
+<mat-form-field appearance="outline" class="search-box">
+  <mat-label>{{ placeholder() }}</mat-label>
+
+  <input
+    matInput
+    type="search"
+    autocomplete="off"
+    [value]="searchTerm()"
+    [attr.maxlength]="maxlength()"
+    [attr.aria-label]="placeholder()"
+    (input)="onInput($event)"
+  />
+
+  @if (searchTerm()) {
+    <button
+      matSuffix
+      mat-icon-button
+      aria-label="Clear search"
+      (click)="clear()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  } @else {
+    <mat-icon matSuffix aria-hidden="true">search</mat-icon>
+  }
+</mat-form-field>

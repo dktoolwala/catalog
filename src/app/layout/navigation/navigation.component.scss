@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: 8px 12px;
+}
+
+.nav-link--active {
+  background-color: var(--color-primary-50, #eff6ff) !important;
+  color: var(--color-primary, #2563eb) !important;
+  border-radius: var(--radius-md, 10px);
+}

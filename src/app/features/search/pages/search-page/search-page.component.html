@@ -1,0 +1,95 @@
+<app-page-header
+  title="Search Products"
+  subtitle="Find what you're looking for"
+/>
+
+<!-- Search Input -->
+<section class="search-input-section" aria-label="Search input">
+  <app-search-box
+    placeholder="Search products by name, description, or SKU..."
+    [initialValue]="initialTerm()"
+    [debounceMs]="350"
+    (searchChange)="onSearchChange($event)"
+  />
+</section>
+
+<!-- Loading -->
+@if (state.loading()) {
+  <app-loading-spinner />
+}
+
+<!-- Error -->
+@if (state.error() && !state.loading()) {
+  <app-error-state (retry)="onRetry()" />
+}
+
+<!-- Content -->
+@if (!state.loading() && !state.error()) {
+
+  <!-- Results when searching -->
+  @if (state.hasActiveTerm()) {
+    @if (state.hasResults()) {
+      <p class="search-results-count" aria-live="polite">
+        {{ state.resultCount() }} result{{ state.resultCount() === 1 ? '' : 's' }}
+        for "{{ state.searchTerm() }}"
+      </p>
+
+      <app-product-grid
+        [products]="state.results()"
+        (productSelected)="onProductSelected($event)"
+      />
+    } @else {
+      <app-empty-state
+        title="No results found"
+        [message]="'No products match \u0022' + state.searchTerm() + '\u0022. Try a different search term.'"
+        icon="search_off"
+      />
+    }
+  } @else {
+
+    <!-- Recent searches when no active query -->
+    @if (state.recentSearches().length > 0) {
+      <section class="recent-searches" aria-label="Recent searches">
+        <div class="recent-searches__header">
+          <h3 class="recent-searches__title">Recent Searches</h3>
+          <button
+            class="recent-searches__clear-all"
+            (click)="onClearRecentSearches()"
+            aria-label="Clear all recent searches"
+          >
+            Clear all
+          </button>
+        </div>
+
+        <ul class="recent-searches__list" role="list">
+          @for (recent of state.recentSearches(); track recent.term) {
+            <li class="recent-searches__item" role="listitem">
+              <button
+                class="recent-searches__term"
+                (click)="onRecentSearchClick(recent.term)"
+                [attr.aria-label]="'Search for ' + recent.term"
+              >
+                <span class="recent-searches__icon" aria-hidden="true">history</span>
+                {{ recent.term }}
+              </button>
+              <button
+                class="recent-searches__remove"
+                (click)="onRemoveRecentSearch(recent.term)"
+                [attr.aria-label]="'Remove ' + recent.term + ' from recent searches'"
+              >
+                <span aria-hidden="true">close</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </section>
+    } @else {
+      <!-- No recent searches, show helpful prompt -->
+      <app-empty-state
+        title="Search our catalog"
+        message="Type at least 2 characters to search products by name, description, or SKU."
+        icon="search"
+      />
+    }
+  }
+}
