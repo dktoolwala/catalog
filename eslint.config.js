@@ -42,7 +42,7 @@ module.exports = tseslint.config(
       ],
       "@typescript-eslint/no-unused-expressions": "error",
       "@typescript-eslint/no-inferrable-types": "warn",
-      "@typescript-eslint/prefer-readonly": "warn",
+      "@typescript-eslint/prefer-readonly": "off",
 
       // General best practices
       "no-console": ["error", { allow: ["warn", "error"] }],
