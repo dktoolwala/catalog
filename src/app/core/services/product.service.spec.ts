@@ -4,7 +4,12 @@ import { provideHttpClientTesting, HttpTestingController } from '@angular/common
 
 import { ProductService } from './product.service';
 import { RuntimeConfigService } from '../../platform/services/runtime-config.service';
-import { MockRuntimeConfigService, createSuccessResponse, createMockProducts, createErrorResponse } from '../../testing';
+import {
+  MockRuntimeConfigService,
+  createSuccessResponse,
+  createMockProducts,
+  createErrorResponse
+} from '../../testing';
 
 describe('ProductService', () => {
   let service: ProductService;
@@ -50,9 +55,8 @@ describe('ProductService', () => {
       done();
     });
 
-    const req = httpMock.expectOne(r =>
-      r.params.get('action') === 'getProduct' &&
-      r.params.get('slug') === 'test-product'
+    const req = httpMock.expectOne(
+      r => r.params.get('action') === 'getProduct' && r.params.get('slug') === 'test-product'
     );
     req.flush(createSuccessResponse(mockProduct));
   });
@@ -65,9 +69,8 @@ describe('ProductService', () => {
       done();
     });
 
-    const req = httpMock.expectOne(r =>
-      r.params.get('action') === 'searchProducts' &&
-      r.params.get('query') === 'laptop'
+    const req = httpMock.expectOne(
+      r => r.params.get('action') === 'searchProducts' && r.params.get('q') === 'laptop'
     );
     req.flush(createSuccessResponse(mockProducts));
   });
@@ -91,13 +94,16 @@ describe('ProductService', () => {
   xit('should handle fetch error', (done: DoneFn) => {
     // Skipping - error response format needs verification
     service.getProducts().subscribe({
-      error: (err) => {
+      error: err => {
         expect(err).toBeDefined();
         done();
       }
     });
 
     const req = httpMock.expectOne(r => r.params.get('action') === 'getProducts');
-    req.flush(createErrorResponse('FETCH_ERROR', 'Failed to fetch'), { status: 500, statusText: 'Server Error' });
+    req.flush(createErrorResponse('FETCH_ERROR', 'Failed to fetch'), {
+      status: 500,
+      statusText: 'Server Error'
+    });
   });
 });

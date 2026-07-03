@@ -9,7 +9,7 @@
  * Never modifies the request or response.
  */
 
-import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { type HttpInterceptorFn, HttpResponse } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
 import { tap } from 'rxjs';
 
@@ -25,7 +25,7 @@ export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
       next: event => {
         if (event instanceof HttpResponse) {
           const elapsed = Math.round(performance.now() - started);
-          console.log(`[HTTP] ${req.method} ${req.urlWithParams} ${event.status} ${elapsed}ms`);
+          console.warn(`[HTTP] ${req.method} ${req.urlWithParams} ${event.status} ${elapsed}ms`);
         }
       },
       error: error => {

@@ -5,7 +5,14 @@
  * Implements automatic retry with exponential backoff and a visible countdown.
  */
 
-import { Component, ChangeDetectionStrategy, inject, signal, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  inject,
+  signal,
+  type OnInit,
+  type OnDestroy
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,8 +31,8 @@ import { HealthService } from '../../core/services/health.service';
         <mat-icon class="error-page__icon">cloud_off</mat-icon>
         <h1 class="error-page__title">Service Unavailable</h1>
         <p class="error-page__description">
-          We're having trouble connecting to our servers.
-          This is usually temporary — we'll retry automatically.
+          We're having trouble connecting to our servers. This is usually temporary — we'll retry
+          automatically.
         </p>
 
         @if (retrying()) {
@@ -54,52 +61,54 @@ import { HealthService } from '../../core/services/health.service';
       </div>
     </div>
   `,
-  styles: [`
-    .error-page {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      padding: 2rem;
-      text-align: center;
-    }
-    .error-page__content {
-      max-width: 480px;
-    }
-    .error-page__icon {
-      font-size: 72px;
-      width: 72px;
-      height: 72px;
-      color: var(--mat-sys-error, #f57c00);
-      margin-bottom: 1.5rem;
-    }
-    .error-page__title {
-      font-size: 1.75rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      color: var(--mat-sys-on-surface, #1a1a1a);
-    }
-    .error-page__description {
-      font-size: 1rem;
-      color: var(--mat-sys-on-surface-variant, #666);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-    .error-page__retry-info {
-      margin-bottom: 2rem;
-    }
-    .error-page__countdown {
-      margin-top: 0.75rem;
-      font-size: 0.875rem;
-      color: var(--mat-sys-on-surface-variant, #888);
-    }
-    .error-page__actions {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-  `],
+  styles: [
+    `
+      .error-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        padding: 2rem;
+        text-align: center;
+      }
+      .error-page__content {
+        max-width: 480px;
+      }
+      .error-page__icon {
+        font-size: 72px;
+        width: 72px;
+        height: 72px;
+        color: var(--mat-sys-error, #f57c00);
+        margin-bottom: 1.5rem;
+      }
+      .error-page__title {
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        color: var(--mat-sys-on-surface, #1a1a1a);
+      }
+      .error-page__description {
+        font-size: 1rem;
+        color: var(--mat-sys-on-surface-variant, #666);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      .error-page__retry-info {
+        margin-bottom: 2rem;
+      }
+      .error-page__countdown {
+        margin-top: 0.75rem;
+        font-size: 0.875rem;
+        color: var(--mat-sys-on-surface-variant, #888);
+      }
+      .error-page__actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    `
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApiUnavailableComponent implements OnInit, OnDestroy {

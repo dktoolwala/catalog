@@ -17,12 +17,12 @@
  */
 
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Observable, of, tap, map, catchError } from 'rxjs';
+import { type Observable, of, tap, map, catchError } from 'rxjs';
 
-import { Category, Product } from '../../../core/models';
+import { type Category, type Product } from '../../../core/models';
 import { CategoryService } from '../../../core/services/category.service';
 import { ProductStateService } from '../../products/state';
-import { CategoryWithCount } from '../models';
+import { type CategoryWithCount } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryStateService {
@@ -48,7 +48,7 @@ export class CategoryStateService {
   /** The currently selected category object */
   readonly selectedCategory = computed<Category | null>(() => {
     const id = this._selectedCategoryId();
-    if (id == null) return null;
+    if (id === null || id === undefined) return null;
     return this._categories().find(c => c.id === id) ?? null;
   });
 

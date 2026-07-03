@@ -22,9 +22,9 @@
 
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
-import { Category, Product } from '../../../core/models';
+import { type Category, type Product } from '../../../core/models';
 import { ROUTE_URLS, buildProductDetailUrl } from '../../../core/constants';
 import { CategoryStateService } from '../state';
 

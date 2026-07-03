@@ -18,7 +18,7 @@
  * Backoff: 1s → 2s (exponential, base from API_RETRY.RETRY_DELAY_MS)
  */
 
-import { HttpInterceptorFn } from '@angular/common/http';
+import { type HttpInterceptorFn } from '@angular/common/http';
 import { retry, timer } from 'rxjs';
 
 import { API_RETRY } from '../constants';
@@ -31,7 +31,7 @@ export const retryInterceptor: HttpInterceptorFn = (req, next) => {
     retry({
       count: API_RETRY.MAX_RETRIES,
       delay: (error, retryCount) => {
-        const status: number = error?.status ?? 0;
+        const status = error?.status ?? 0;
         const isNetworkError = status === 0;
         const isRetryableServer = RETRYABLE_SERVER_CODES.has(status);
 

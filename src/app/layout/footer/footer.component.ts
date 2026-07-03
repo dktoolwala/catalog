@@ -5,12 +5,12 @@
  * fetched from the Settings sheet via SettingsService.
  */
 
-import { Component, ChangeDetectionStrategy, inject, OnInit, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, type OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 
 import { APP_INFO } from '../../core/constants';
-import { Settings } from '../../core/models';
+import { type Settings } from '../../core/models';
 import { SettingsService } from '../../core/services';
 
 @Component({
@@ -35,7 +35,8 @@ export class FooterComponent implements OnInit {
   protected getMapUrl(): string | null {
     const s = this.settings();
     if (s?.mapLink) return s.mapLink;
-    if (s?.address) return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.address);
+    if (s?.address)
+      return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.address);
     return null;
   }
 }

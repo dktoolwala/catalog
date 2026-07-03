@@ -10,8 +10,8 @@
 
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
-import { Category } from '../../../../core/models';
-import { CategoryWithCount } from '../../models';
+import { type Category } from '../../../../core/models';
+import { type CategoryWithCount } from '../../models';
 import { CategoryCardComponent } from '../category-card/category-card.component';
 
 @Component({

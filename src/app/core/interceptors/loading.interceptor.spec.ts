@@ -37,7 +37,11 @@ describe('loadingInterceptor', () => {
   });
 
   it('should set loading to false on error', () => {
-    http.get('/api').subscribe({ error: () => {} });
+    http.get('/api').subscribe({
+      error: () => {
+        /* expected */
+      }
+    });
     httpMock.expectOne('/api').flush(null, { status: 500, statusText: 'Error' });
     expect(loadingService.loading()).toBe(false);
   });

@@ -12,10 +12,10 @@
  */
 
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
 import { API_ACTIONS, API_PARAMS } from '../constants';
-import { Product } from '../models';
+import { type Product } from '../models';
 import { ApiService, unwrapResponse } from './api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -24,9 +24,7 @@ export class ProductService {
 
   /** Fetch all active products */
   getProducts(): Observable<Product[]> {
-    return this.api
-      .get<Product[]>(API_ACTIONS.GET_PRODUCTS)
-      .pipe(unwrapResponse());
+    return this.api.get<Product[]>(API_ACTIONS.GET_PRODUCTS).pipe(unwrapResponse());
   }
 
   /** Fetch a single product by its URL slug */

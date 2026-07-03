@@ -10,10 +10,10 @@
  */
 
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
 import { API_ACTIONS } from '../constants';
-import { HealthData } from '../models';
+import { type HealthData } from '../models';
 import { ApiService, unwrapResponse } from './api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -22,8 +22,6 @@ export class HealthService {
 
   /** Check backend health and connectivity */
   checkHealth(): Observable<HealthData> {
-    return this.api
-      .get<HealthData>(API_ACTIONS.HEALTH)
-      .pipe(unwrapResponse());
+    return this.api.get<HealthData>(API_ACTIONS.HEALTH).pipe(unwrapResponse());
   }
 }

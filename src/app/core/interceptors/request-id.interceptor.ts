@@ -10,7 +10,7 @@
  * Preserves all existing headers.
  */
 
-import { HttpContextToken, HttpInterceptorFn } from '@angular/common/http';
+import { HttpContextToken, type HttpInterceptorFn } from '@angular/common/http';
 
 import { generateUuid } from '../utils';
 

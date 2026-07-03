@@ -6,7 +6,7 @@
  * Pure pipe — only recalculates when inputs change.
  */
 
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, type PipeTransform } from '@angular/core';
 
 import { truncate } from '../../core/utils';
 

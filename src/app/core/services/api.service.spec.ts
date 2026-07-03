@@ -5,8 +5,11 @@ import { of } from 'rxjs';
 
 import { ApiService, unwrapResponse } from './api.service';
 import { RuntimeConfigService } from '../../platform/services/runtime-config.service';
-import { MockRuntimeConfigService } from '../../testing';
-import { createSuccessResponse, createErrorResponse } from '../../testing';
+import {
+  MockRuntimeConfigService,
+  createSuccessResponse,
+  createErrorResponse
+} from '../../testing';
 
 describe('ApiService', () => {
   let service: ApiService;
@@ -52,9 +55,8 @@ describe('ApiService', () => {
       done();
     });
 
-    const req = httpMock.expectOne(r =>
-      r.params.get('action') === 'getProduct' &&
-      r.params.get('slug') === 'test-product'
+    const req = httpMock.expectOne(
+      r => r.params.get('action') === 'getProduct' && r.params.get('slug') === 'test-product'
     );
     req.flush(mockResponse);
   });
@@ -75,23 +77,27 @@ describe('unwrapResponse', () => {
   it('should extract data from successful response', (done: DoneFn) => {
     const response = createSuccessResponse({ name: 'test' });
 
-    of(response).pipe(unwrapResponse()).subscribe({
-      next: (data: unknown) => {
-        expect(data).toEqual({ name: 'test' });
-        done();
-      }
-    });
+    of(response)
+      .pipe(unwrapResponse())
+      .subscribe({
+        next: (data: unknown) => {
+          expect(data).toEqual({ name: 'test' });
+          done();
+        }
+      });
   });
 
   it('should throw ApiRequestError on failure response', (done: DoneFn) => {
     const response = createErrorResponse('PRODUCT_NOT_FOUND', 'Not found');
 
-    of(response).pipe(unwrapResponse()).subscribe({
-      error: (err: Error) => {
-        expect(err.name).toBe('ApiRequestError');
-        expect(err.message).toBe('Not found');
-        done();
-      }
-    });
+    of(response)
+      .pipe(unwrapResponse())
+      .subscribe({
+        error: (err: Error) => {
+          expect(err.name).toBe('ApiRequestError');
+          expect(err.message).toBe('Not found');
+          done();
+        }
+      });
   });
 });

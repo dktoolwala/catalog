@@ -17,10 +17,10 @@
 
 import { Injectable, computed, inject, signal } from '@angular/core';
 
-import { Product } from '../../../core/models';
+import { type Product } from '../../../core/models';
 import { SEARCH, STORAGE_KEYS } from '../../../core/constants';
 import { ProductStateService } from '../../products/state';
-import { RecentSearch } from '../models';
+import { type RecentSearch } from '../models';
 
 const RECENT_SEARCHES_KEY = `${STORAGE_KEYS.CACHE_PREFIX}recent-searches`;
 const MAX_RECENT_SEARCHES = 10;
@@ -61,8 +61,8 @@ export class SearchStateService {
   readonly error = computed(() => this.productState.error());
 
   /** Whether a meaningful search term is active */
-  readonly hasActiveTerm = computed(() =>
-    this._searchTerm().trim().length >= SEARCH.MIN_QUERY_LENGTH
+  readonly hasActiveTerm = computed(
+    () => this._searchTerm().trim().length >= SEARCH.MIN_QUERY_LENGTH
   );
 
   // ─── Actions ─────────────────────────────────────────────────
@@ -121,15 +121,13 @@ export class SearchStateService {
     const current = this._recentSearches();
 
     // Deduplicate (case-insensitive)
-    const filtered = current.filter(
-      s => s.term.toLowerCase() !== term.toLowerCase()
-    );
+    const filtered = current.filter(s => s.term.toLowerCase() !== term.toLowerCase());
 
     // Prepend new entry, limit to max
-    const updated: RecentSearch[] = [
-      { term, timestamp: Date.now() },
-      ...filtered
-    ].slice(0, MAX_RECENT_SEARCHES);
+    const updated: RecentSearch[] = [{ term, timestamp: Date.now() }, ...filtered].slice(
+      0,
+      MAX_RECENT_SEARCHES
+    );
 
     this._recentSearches.set(updated);
     this.persistRecentSearches(updated);

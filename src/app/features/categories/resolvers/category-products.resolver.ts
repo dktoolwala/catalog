@@ -11,7 +11,7 @@
  */
 
 import { inject } from '@angular/core';
-import { ResolveFn, Router } from '@angular/router';
+import { type ResolveFn, Router } from '@angular/router';
 
 import { ROUTE_URLS } from '../../../core/constants';
 import { CategoryFacade } from '../application';
@@ -19,7 +19,7 @@ import { CategoryFacade } from '../application';
 /** Route parameter name for category ID */
 export const CATEGORY_ID_PARAM = 'categoryId';
 
-export const categoryProductsResolver: ResolveFn<boolean> = (route) => {
+export const categoryProductsResolver: ResolveFn<boolean> = route => {
   const facade = inject(CategoryFacade);
   const router = inject(Router);
   const categoryId = route.paramMap.get(CATEGORY_ID_PARAM);

@@ -8,13 +8,12 @@
  * Route: /search?q=term → Search page with pre-filled query
  */
 
-import { Routes } from '@angular/router';
+import { type Routes } from '@angular/router';
 
 export const searchRoutes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/search-page/search-page.component')
-        .then(m => m.SearchPageComponent)
+      import('./pages/search-page/search-page.component').then(m => m.SearchPageComponent)
   }
 ];

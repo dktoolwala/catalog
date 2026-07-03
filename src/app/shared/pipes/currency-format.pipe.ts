@@ -6,7 +6,7 @@
  * Pure pipe — only recalculates when input changes.
  */
 
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, type PipeTransform } from '@angular/core';
 import { formatCurrency } from '@angular/common';
 
 import { CURRENCY } from '../../core/constants';
@@ -22,7 +22,7 @@ export class CurrencyFormatPipe implements PipeTransform {
     currencyCode = CURRENCY.DEFAULT_CODE,
     _display: 'symbol' | 'code' | 'symbol-narrow' = 'symbol'
   ): string {
-    if (value == null) {
+    if (value === null || value === undefined) {
       return '';
     }
     return formatCurrency(value, CURRENCY.LOCALE, CURRENCY.DEFAULT_SYMBOL, currencyCode);

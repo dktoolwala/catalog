@@ -5,8 +5,8 @@
  * Provides mock factories, signal testing utilities, and common setup patterns.
  */
 
-import { signal, WritableSignal, Signal } from '@angular/core';
-import { ComponentFixture } from '@angular/core/testing';
+import { signal, type WritableSignal, type Signal } from '@angular/core';
+import { type ComponentFixture } from '@angular/core/testing';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';

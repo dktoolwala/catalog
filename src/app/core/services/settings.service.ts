@@ -10,10 +10,10 @@
  */
 
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
 import { API_ACTIONS } from '../constants';
-import { Settings } from '../models';
+import { type Settings } from '../models';
 import { ApiService, unwrapResponse } from './api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -22,8 +22,6 @@ export class SettingsService {
 
   /** Fetch application settings */
   getSettings(): Observable<Settings> {
-    return this.api
-      .get<Settings>(API_ACTIONS.GET_SETTINGS)
-      .pipe(unwrapResponse());
+    return this.api.get<Settings>(API_ACTIONS.GET_SETTINGS).pipe(unwrapResponse());
   }
 }

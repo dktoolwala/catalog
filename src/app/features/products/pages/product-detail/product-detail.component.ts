@@ -12,7 +12,7 @@
  *   - Back to products navigation
  */
 
-import { Component, ChangeDetectionStrategy, inject, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, type OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';

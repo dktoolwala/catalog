@@ -5,7 +5,7 @@
  * Uses sensible defaults with optional overrides.
  */
 
-import { Product, Category, Settings } from '../core/models';
+import { type Product, type Category, type Settings } from '../core/models';
 
 export function createMockProduct(overrides?: Partial<Product>): Product {
   return {
@@ -25,7 +25,7 @@ export function createMockProduct(overrides?: Partial<Product>): Product {
   };
 }
 
-export function createMockProducts(count: number = 3): Product[] {
+export function createMockProducts(count = 3): Product[] {
   return Array.from({ length: count }, (_, i) =>
     createMockProduct({
       id: `${i + 1}`,
@@ -46,7 +46,7 @@ export function createMockCategory(overrides?: Partial<Category>): Category {
   };
 }
 
-export function createMockCategories(count: number = 3): Category[] {
+export function createMockCategories(count = 3): Category[] {
   return Array.from({ length: count }, (_, i) =>
     createMockCategory({
       id: `cat-${i + 1}`,

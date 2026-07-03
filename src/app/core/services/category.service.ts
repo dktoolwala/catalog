@@ -9,10 +9,10 @@
  */
 
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
 import { API_ACTIONS } from '../constants';
-import { Category } from '../models';
+import { type Category } from '../models';
 import { ApiService, unwrapResponse } from './api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -21,8 +21,6 @@ export class CategoryService {
 
   /** Fetch all active categories */
   getCategories(): Observable<Category[]> {
-    return this.api
-      .get<Category[]>(API_ACTIONS.GET_CATEGORIES)
-      .pipe(unwrapResponse());
+    return this.api.get<Category[]>(API_ACTIONS.GET_CATEGORIES).pipe(unwrapResponse());
   }
 }

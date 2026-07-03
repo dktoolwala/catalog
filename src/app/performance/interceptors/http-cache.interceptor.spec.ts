@@ -69,14 +69,18 @@ describe('HttpCacheInterceptor', () => {
 
   it('should not cache error responses', () => {
     http.get('/api/data').subscribe({
-      error: () => {}
+      error: () => {
+        /* expected */
+      }
     });
 
     const req1 = httpMock.expectOne('/api/data');
     req1.flush(null, { status: 500, statusText: 'Error' });
 
     http.get('/api/data').subscribe({
-      error: () => {}
+      error: () => {
+        /* expected */
+      }
     });
 
     // Error response should not be cached
@@ -86,14 +90,18 @@ describe('HttpCacheInterceptor', () => {
 
   it('should not cache non-2xx responses', () => {
     http.get('/api/data').subscribe({
-      error: () => {}
+      error: () => {
+        /* expected */
+      }
     });
 
     const req1 = httpMock.expectOne('/api/data');
     req1.flush(null, { status: 404, statusText: 'Not Found' });
 
     http.get('/api/data').subscribe({
-      error: () => {}
+      error: () => {
+        /* expected */
+      }
     });
 
     // Non-2xx response should not be cached

@@ -9,7 +9,7 @@
  * Only caches successful responses (2xx).
  */
 
-import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { type HttpInterceptorFn, HttpResponse } from '@angular/common/http';
 import { of, tap } from 'rxjs';
 
 interface CacheEntry {

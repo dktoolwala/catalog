@@ -8,8 +8,8 @@
  * Useful when multiple components load the same data on init.
  */
 
-import { HttpInterceptorFn, HttpEvent } from '@angular/common/http';
-import { Observable, share, finalize } from 'rxjs';
+import { type HttpInterceptorFn, type HttpEvent } from '@angular/common/http';
+import { type Observable, share, finalize } from 'rxjs';
 
 const inFlight = new Map<string, Observable<HttpEvent<unknown>>>();
 

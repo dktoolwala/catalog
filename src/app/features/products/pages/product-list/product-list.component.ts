@@ -11,13 +11,15 @@
  * Presentation is delegated to child components.
  */
 
-import { Component, ChangeDetectionStrategy, inject, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, type OnInit } from '@angular/core';
 
-import { Product } from '../../../../core/models';
-import { PageHeaderComponent } from '../../../../shared/components';
-import { LoadingSpinnerComponent } from '../../../../shared/components';
-import { EmptyStateComponent } from '../../../../shared/components';
-import { ErrorStateComponent } from '../../../../shared/components';
+import { type Product } from '../../../../core/models';
+import {
+  PageHeaderComponent,
+  LoadingSpinnerComponent,
+  EmptyStateComponent,
+  ErrorStateComponent
+} from '../../../../shared/components';
 import { ProductFacade } from '../../application';
 import { ProductGridComponent } from '../../components/product-grid/product-grid.component';
 import { ProductFiltersComponent } from '../../components/product-filters/product-filters.component';

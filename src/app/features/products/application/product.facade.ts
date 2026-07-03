@@ -22,9 +22,9 @@
 
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
-import { Product } from '../../../core/models';
+import { type Product } from '../../../core/models';
 import { buildProductDetailUrl } from '../../../core/constants';
 import { ProductStateService } from '../state';
 

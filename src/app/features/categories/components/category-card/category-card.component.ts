@@ -12,16 +12,32 @@
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
-import { Category } from '../../../../core/models';
+import { type Category } from '../../../../core/models';
 
 const CATEGORY_COLORS = [
-  '#DCFCE7', '#DBEAFE', '#FEF3C7', '#FCE7F3', '#E0E7FF',
-  '#D1FAE5', '#FEE2E2', '#F3E8FF', '#CFFAFE', '#FEF9C3'
+  '#DCFCE7',
+  '#DBEAFE',
+  '#FEF3C7',
+  '#FCE7F3',
+  '#E0E7FF',
+  '#D1FAE5',
+  '#FEE2E2',
+  '#F3E8FF',
+  '#CFFAFE',
+  '#FEF9C3'
 ];
 
 const CATEGORY_TEXT_COLORS = [
-  '#166534', '#1E40AF', '#92400E', '#9D174D', '#3730A3',
-  '#065F46', '#991B1B', '#6B21A8', '#155E75', '#854D0E'
+  '#166534',
+  '#1E40AF',
+  '#92400E',
+  '#9D174D',
+  '#3730A3',
+  '#065F46',
+  '#991B1B',
+  '#6B21A8',
+  '#155E75',
+  '#854D0E'
 ];
 
 @Component({
@@ -64,7 +80,7 @@ export class CategoryCardComponent {
   private hashCode(str: string): number {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash = (hash << 5) - hash + str.charCodeAt(i);
       hash |= 0;
     }
     return hash;

@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 import { ProductFacade } from './product.facade';
 import { ProductStateService } from '../state';
-import { createMockProducts } from '../../../testing';
-import { MockRuntimeConfigService } from '../../../testing';
+import { createMockProducts, MockRuntimeConfigService } from '../../../testing';
 import { RuntimeConfigService } from '../../../platform/services/runtime-config.service';
 import { ProductService } from '../../../core/services/product.service';
 import { CategoryService } from '../../../core/services/category.service';

@@ -8,15 +8,15 @@
  */
 
 import { Injectable } from '@angular/core';
-import { PreloadingStrategy, Route } from '@angular/router';
-import { Observable, of, timer, switchMap } from 'rxjs';
+import { type PreloadingStrategy, type Route } from '@angular/router';
+import { type Observable, of, timer, switchMap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SelectivePreloadingStrategy implements PreloadingStrategy {
   /** Tracks which routes have been preloaded (for debugging) */
   readonly preloadedRoutes: string[] = [];
 
-  preload(route: Route, load: () => Observable<any>): Observable<any> {
+  preload(route: Route, load: () => Observable<unknown>): Observable<unknown> {
     if (route.data?.['preload']) {
       const delay = route.data?.['preloadDelay'] ?? 2000;
       this.preloadedRoutes.push(route.path || '');

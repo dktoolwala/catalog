@@ -6,10 +6,10 @@
  */
 
 import { signal } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, type Observable } from 'rxjs';
 
-import { ApiResponse } from '../core/models';
-import { AppError } from '../core/error/error.service';
+import { type ApiResponse } from '../core/models';
+import { type AppError } from '../core/error/error.service';
 import { createMockProducts, createMockCategories } from './mock-data';
 import { createSuccessResponse } from './mock-api-responses';
 
@@ -33,9 +33,11 @@ export class MockLoadingService {
 
 /** Mock ApiService */
 export class MockApiService {
-  get = jasmine.createSpy('get').and.callFake(<T>(_action: string): Observable<ApiResponse<T>> =>
-    of(createSuccessResponse([] as unknown as T))
-  );
+  get = jasmine
+    .createSpy('get')
+    .and.callFake(<T>(_action: string): Observable<ApiResponse<T>> =>
+      of(createSuccessResponse([] as unknown as T))
+    );
 }
 
 /** Mock RuntimeConfigService */
@@ -51,12 +53,22 @@ export class MockRuntimeConfigService {
     features: { pwa: false, analytics: false, structuredData: false }
   });
   readonly config = this._config.asReadonly();
-  get loaded(): boolean { return true; }
-  get apiUrl(): string { return this._config().apiUrl; }
-  get production(): boolean { return this._config().production; }
-  get logLevel(): string { return this._config().logLevel; }
-  get baseUrl(): string { return this._config().baseUrl; }
-  get appTitle(): string { return this._config().appTitle; }
+  readonly loaded = true;
+  get apiUrl(): string {
+    return this._config().apiUrl;
+  }
+  get production(): boolean {
+    return this._config().production;
+  }
+  get logLevel(): string {
+    return this._config().logLevel;
+  }
+  get baseUrl(): string {
+    return this._config().baseUrl;
+  }
+  get appTitle(): string {
+    return this._config().appTitle;
+  }
   load = jasmine.createSpy('load').and.returnValue(Promise.resolve());
 }
 

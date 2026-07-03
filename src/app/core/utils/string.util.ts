@@ -50,7 +50,7 @@ export function stripHtml(value: string): string {
  * Checks if a string is empty or contains only whitespace.
  */
 export function isBlank(value: string | null | undefined): boolean {
-  return value == null || value.trim().length === 0;
+  return value === null || value === undefined || value.trim().length === 0;
 }
 
 /**

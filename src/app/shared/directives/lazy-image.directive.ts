@@ -11,14 +11,7 @@
  * src when the element becomes visible (threshold: 0.1).
  */
 
-import {
-  Directive,
-  ElementRef,
-  OnDestroy,
-  inject,
-  input,
-  effect
-} from '@angular/core';
+import { Directive, ElementRef, type OnDestroy, inject, input, effect } from '@angular/core';
 
 import { IMAGE_PLACEHOLDER } from '../tokens';
 

@@ -10,7 +10,7 @@ import { Component, ChangeDetectionStrategy, input, output } from '@angular/core
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect, MatOption } from '@angular/material/select';
 
-import { Category } from '../../../../core/models';
+import { type Category } from '../../../../core/models';
 import { SearchBoxComponent } from '../../../../shared/components';
 
 @Component({

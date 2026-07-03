@@ -10,7 +10,7 @@
  * Never modifies the request or response.
  */
 
-import { HttpInterceptorFn } from '@angular/common/http';
+import { type HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { finalize } from 'rxjs';
 
@@ -21,7 +21,5 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
 
   loadingService.begin();
 
-  return next(req).pipe(
-    finalize(() => loadingService.end())
-  );
+  return next(req).pipe(finalize(() => loadingService.end()));
 };

@@ -5,9 +5,12 @@
  * Used across all test suites to avoid hardcoded response fixtures.
  */
 
-import { ApiResponse, ApiSuccessResponse, ApiErrorResponse } from '../core/models';
+import { type ApiResponse, type ApiSuccessResponse, type ApiErrorResponse } from '../core/models';
 
-export function createSuccessResponse<T>(data: T, overrides?: Partial<ApiSuccessResponse<T>>): ApiResponse<T> {
+export function createSuccessResponse<T>(
+  data: T,
+  overrides?: Partial<ApiSuccessResponse<T>>
+): ApiResponse<T> {
   return {
     success: true,
     data,

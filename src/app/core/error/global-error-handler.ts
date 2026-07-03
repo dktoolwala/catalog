@@ -16,7 +16,7 @@
  *   - Swallow errors silently
  */
 
-import { ErrorHandler, Injectable, inject, NgZone } from '@angular/core';
+import { type ErrorHandler, Injectable, inject, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -54,11 +54,7 @@ export class GlobalErrorHandler implements ErrorHandler {
   private navigateToErrorPage(error: unknown): void {
     // Avoid navigation loops if already on an error page
     const currentUrl = this.router.url;
-    const errorPages = [
-      ROUTE_URLS.SERVER_ERROR,
-      ROUTE_URLS.OFFLINE,
-      ROUTE_URLS.API_UNAVAILABLE
-    ];
+    const errorPages = [ROUTE_URLS.SERVER_ERROR, ROUTE_URLS.OFFLINE, ROUTE_URLS.API_UNAVAILABLE];
     if (errorPages.some(page => currentUrl.startsWith(page))) {
       return;
     }
@@ -76,8 +72,8 @@ export class GlobalErrorHandler implements ErrorHandler {
     }
 
     if (targetUrl) {
-      this.zone.run(() => this.router.navigateByUrl(targetUrl!));
+      const url = targetUrl;
+      this.zone.run(() => this.router.navigateByUrl(url));
     }
   }
 }
-

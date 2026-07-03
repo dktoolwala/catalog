@@ -9,13 +9,7 @@
  *   <input [appAutofocus]="shouldFocus()" />
  */
 
-import {
-  Directive,
-  ElementRef,
-  AfterViewInit,
-  inject,
-  input
-} from '@angular/core';
+import { Directive, ElementRef, type AfterViewInit, inject, input } from '@angular/core';
 
 @Directive({
   selector: '[appAutofocus]',

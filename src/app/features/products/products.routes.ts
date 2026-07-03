@@ -6,7 +6,7 @@
  *   /products/:slug → Product detail (resolver pre-loads data)
  */
 
-import { Routes } from '@angular/router';
+import { type Routes } from '@angular/router';
 
 import { ROUTE_PATHS } from '../../core/constants';
 import { productDetailResolver } from './resolvers';
@@ -15,14 +15,12 @@ export const productRoutes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/product-list/product-list.component')
-        .then(m => m.ProductListComponent)
+      import('./pages/product-list/product-list.component').then(m => m.ProductListComponent)
   },
   {
     path: ROUTE_PATHS.PRODUCT_DETAIL,
     resolve: { product: productDetailResolver },
     loadComponent: () =>
-      import('./pages/product-detail/product-detail.component')
-        .then(m => m.ProductDetailComponent)
+      import('./pages/product-detail/product-detail.component').then(m => m.ProductDetailComponent)
   }
 ];

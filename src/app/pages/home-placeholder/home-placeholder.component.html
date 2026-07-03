@@ -3,8 +3,15 @@
   <section class="hero">
     <div class="hero__content">
       <span class="hero__badge">New Arrivals</span>
-      <h1 class="hero__title">Discover Our<br><span class="hero__title-accent">Premium Collection</span></h1>
-      <p class="hero__subtitle">Curated products with quality you can trust. Browse our catalog and find exactly what you need.</p>
+      <h1 class="hero__title">
+        Discover Our
+        <br />
+        <span class="hero__title-accent">Premium Collection</span>
+      </h1>
+      <p class="hero__subtitle">
+        Curated products with quality you can trust. Browse our catalog and find exactly what you
+        need.
+      </p>
       <div class="hero__actions">
         <button mat-flat-button class="hero__cta-primary" (click)="browseProducts()">
           Browse Products
@@ -48,23 +55,62 @@
   <section class="section">
     <div class="section__header">
       <h2 class="section__title">Shop by Category</h2>
-      <a routerLink="/categories" class="section__link">View all <mat-icon>arrow_forward</mat-icon></a>
+      <a routerLink="/categories" class="section__link">
+        View all
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
     </div>
     <div class="categories-preview">
-      <div class="category-preview-card" (click)="browseCategories()">
-        <img src="https://placehold.co/300x200/DCFCE7/166534?font=montserrat&text=Electronics" alt="Electronics" />
+      <div
+        class="category-preview-card"
+        role="button"
+        tabindex="0"
+        (click)="browseCategories()"
+        (keydown.enter)="browseCategories()"
+      >
+        <img
+          src="https://placehold.co/300x200/DCFCE7/166534?font=montserrat&text=Electronics"
+          alt="Electronics"
+        />
         <span class="category-preview-card__name">Electronics</span>
       </div>
-      <div class="category-preview-card" (click)="browseCategories()">
-        <img src="https://placehold.co/300x200/FEF3C7/92400E?font=montserrat&text=Fashion" alt="Fashion" />
+      <div
+        class="category-preview-card"
+        role="button"
+        tabindex="0"
+        (click)="browseCategories()"
+        (keydown.enter)="browseCategories()"
+      >
+        <img
+          src="https://placehold.co/300x200/FEF3C7/92400E?font=montserrat&text=Fashion"
+          alt="Fashion"
+        />
         <span class="category-preview-card__name">Fashion</span>
       </div>
-      <div class="category-preview-card" (click)="browseCategories()">
-        <img src="https://placehold.co/300x200/E0E7FF/3730A3?font=montserrat&text=Home+%26+Living" alt="Home & Living" />
+      <div
+        class="category-preview-card"
+        role="button"
+        tabindex="0"
+        (click)="browseCategories()"
+        (keydown.enter)="browseCategories()"
+      >
+        <img
+          src="https://placehold.co/300x200/E0E7FF/3730A3?font=montserrat&text=Home+%26+Living"
+          alt="Home & Living"
+        />
         <span class="category-preview-card__name">Home & Living</span>
       </div>
-      <div class="category-preview-card" (click)="browseCategories()">
-        <img src="https://placehold.co/300x200/FCE7F3/9D174D?font=montserrat&text=Accessories" alt="Accessories" />
+      <div
+        class="category-preview-card"
+        role="button"
+        tabindex="0"
+        (click)="browseCategories()"
+        (keydown.enter)="browseCategories()"
+      >
+        <img
+          src="https://placehold.co/300x200/FCE7F3/9D174D?font=montserrat&text=Accessories"
+          alt="Accessories"
+        />
         <span class="category-preview-card__name">Accessories</span>
       </div>
     </div>
@@ -74,7 +120,9 @@
   <section class="cta-banner">
     <div class="cta-banner__content">
       <h2 class="cta-banner__title">Can't find what you're looking for?</h2>
-      <p class="cta-banner__text">Use our powerful search to find products by name, description, or SKU.</p>
+      <p class="cta-banner__text">
+        Use our powerful search to find products by name, description, or SKU.
+      </p>
       <button mat-flat-button class="cta-banner__btn" (click)="goToSearch()">
         <mat-icon>search</mat-icon>
         Search Products

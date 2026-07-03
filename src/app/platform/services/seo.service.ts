@@ -12,7 +12,7 @@
 import { Injectable, inject } from '@angular/core';
 
 import { BrowserTitleService } from './browser-title.service';
-import { BrowserMetaService, PageMeta } from './browser-meta.service';
+import { BrowserMetaService, type PageMeta } from './browser-meta.service';
 import { CanonicalUrlService } from './canonical-url.service';
 import { StructuredDataService } from './structured-data.service';
 import { RuntimeConfigService } from './runtime-config.service';
@@ -99,9 +99,7 @@ export class SeoService {
     const title = query ? `Search: ${query}` : 'Search Products';
     this.updatePage({
       title,
-      description: query
-        ? `Search results for "${query}"`
-        : 'Search our complete product catalog',
+      description: query ? `Search results for "${query}"` : 'Search our complete product catalog',
       type: 'website'
     });
   }

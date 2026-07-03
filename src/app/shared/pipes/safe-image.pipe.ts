@@ -6,7 +6,7 @@
  * Pure pipe — only recalculates when input changes.
  */
 
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, type PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'safeImage',
@@ -22,7 +22,12 @@ export class SafeImagePipe implements PipeTransform {
     }
 
     // Basic URL validation — must start with http(s) or relative path
-    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/') || url.startsWith('assets/')) {
+    if (
+      url.startsWith('http://') ||
+      url.startsWith('https://') ||
+      url.startsWith('/') ||
+      url.startsWith('assets/')
+    ) {
       return url;
     }
 

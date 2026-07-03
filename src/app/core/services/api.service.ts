@@ -18,12 +18,12 @@
 
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { type Observable, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { RuntimeConfigService } from '../../platform/services/runtime-config.service';
 import { API_PARAMS } from '../constants';
-import { ApiResponse } from '../models';
+import { type ApiResponse } from '../models';
 
 /**
  * Typed error thrown when the API returns success: false.
@@ -55,11 +55,7 @@ export function unwrapResponse<T>() {
         if (response.success) {
           return response.data;
         }
-        throw new ApiRequestError(
-          response.error.code,
-          response.error.message,
-          response.requestId
-        );
+        throw new ApiRequestError(response.error.code, response.error.message, response.requestId);
       })
     );
 }

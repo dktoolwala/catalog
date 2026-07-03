@@ -8,7 +8,7 @@
  */
 
 import { Injectable, inject, signal } from '@angular/core';
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { SwUpdate, type VersionReadyEvent } from '@angular/service-worker';
 import { filter } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -22,11 +22,11 @@ export class PwaUpdateService {
   initialize(): void {
     if (!this.swUpdate.isEnabled) return;
 
-    this.swUpdate.versionUpdates.pipe(
-      filter((event): event is VersionReadyEvent => event.type === 'VERSION_READY')
-    ).subscribe(() => {
-      this.updateAvailable.set(true);
-    });
+    this.swUpdate.versionUpdates
+      .pipe(filter((event): event is VersionReadyEvent => event.type === 'VERSION_READY'))
+      .subscribe(() => {
+        this.updateAvailable.set(true);
+      });
   }
 
   /** Activate the update and reload */

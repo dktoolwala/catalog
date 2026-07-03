@@ -16,7 +16,7 @@ export class ImagePreloadService {
   preload(url: string): Promise<void> {
     if (!url || this.preloadedUrls.has(url)) return Promise.resolve();
 
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const img = new Image();
       img.onload = () => {
         this.preloadedUrls.add(url);
@@ -33,9 +33,11 @@ export class ImagePreloadService {
     if (unique.length === 0) return;
 
     if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(() => {
-        unique.forEach(url => this.preload(url));
-      });
+      (window as unknown as { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(
+        () => {
+          unique.forEach(url => this.preload(url));
+        }
+      );
     } else {
       setTimeout(() => {
         unique.forEach(url => this.preload(url));

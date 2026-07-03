@@ -12,7 +12,7 @@
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
-import { Product } from '../../../../core/models';
+import { type Product } from '../../../../core/models';
 import { CurrencyFormatPipe } from '../../../../shared/pipes';
 import { ProductImageComponent } from '../product-image/product-image.component';
 

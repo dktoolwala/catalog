@@ -64,8 +64,8 @@ export function getRelativeTime(value: string | Date, locale = 'en'): string {
 
   for (const { unit, ms } of units) {
     if (absDiffMs >= ms) {
-      const value = Math.round(diffMs / ms);
-      return formatter.format(value, unit);
+      const amount = Math.round(diffMs / ms);
+      return formatter.format(amount, unit);
     }
   }
 

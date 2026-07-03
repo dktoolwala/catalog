@@ -13,7 +13,7 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 
-import { CategoryWithCount } from '../../models';
+import { type CategoryWithCount } from '../../models';
 
 @Component({
   selector: 'app-category-sidebar',

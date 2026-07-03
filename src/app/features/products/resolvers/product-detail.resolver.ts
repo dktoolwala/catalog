@@ -7,12 +7,12 @@
  */
 
 import { inject } from '@angular/core';
-import { ResolveFn } from '@angular/router';
+import { type ResolveFn } from '@angular/router';
 
 import { ROUTE_PARAMS } from '../../../core/constants';
 import { ProductFacade } from '../application';
 
-export const productDetailResolver: ResolveFn<boolean> = (route) => {
+export const productDetailResolver: ResolveFn<boolean> = route => {
   const facade = inject(ProductFacade);
   const slug = route.paramMap.get(ROUTE_PARAMS.SLUG);
 

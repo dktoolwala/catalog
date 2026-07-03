@@ -10,7 +10,7 @@
 
 import { Injectable, signal } from '@angular/core';
 
-import { RuntimeConfig, DEFAULT_RUNTIME_CONFIG } from '../models';
+import { type RuntimeConfig, DEFAULT_RUNTIME_CONFIG } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class RuntimeConfigService {
@@ -26,11 +26,21 @@ export class RuntimeConfigService {
   }
 
   /** Shorthand accessors */
-  get apiUrl(): string { return this._config().apiUrl; }
-  get production(): boolean { return this._config().production; }
-  get logLevel(): string { return this._config().logLevel; }
-  get baseUrl(): string { return this._config().baseUrl; }
-  get appTitle(): string { return this._config().appTitle; }
+  get apiUrl(): string {
+    return this._config().apiUrl;
+  }
+  get production(): boolean {
+    return this._config().production;
+  }
+  get logLevel(): string {
+    return this._config().logLevel;
+  }
+  get baseUrl(): string {
+    return this._config().baseUrl;
+  }
+  get appTitle(): string {
+    return this._config().appTitle;
+  }
 
   /**
    * Load config from assets/config.json.

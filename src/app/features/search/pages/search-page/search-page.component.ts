@@ -26,20 +26,22 @@ import {
   ChangeDetectionStrategy,
   DestroyRef,
   inject,
-  OnInit,
+  type OnInit,
   signal
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, map } from 'rxjs';
 
-import { Product } from '../../../../core/models';
+import { type Product } from '../../../../core/models';
 import { ROUTE_QUERY_PARAMS } from '../../../../core/constants';
-import { PageHeaderComponent } from '../../../../shared/components';
-import { LoadingSpinnerComponent } from '../../../../shared/components';
-import { EmptyStateComponent } from '../../../../shared/components';
-import { ErrorStateComponent } from '../../../../shared/components';
-import { SearchBoxComponent } from '../../../../shared/components';
+import {
+  PageHeaderComponent,
+  LoadingSpinnerComponent,
+  EmptyStateComponent,
+  ErrorStateComponent,
+  SearchBoxComponent
+} from '../../../../shared/components';
 import { ProductGridComponent } from '../../../products/components/product-grid/product-grid.component';
 import { SearchFacade } from '../../application';
 
@@ -68,14 +70,16 @@ export class SearchPageComponent implements OnInit {
 
   ngOnInit(): void {
     // Subscribe to query param changes (supports Back/Forward navigation)
-    this.route.queryParamMap.pipe(
-      map(params => params.get(ROUTE_QUERY_PARAMS.SEARCH) ?? ''),
-      distinctUntilChanged(),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe(term => {
-      this.initialTerm.set(term);
-      this.state.search(term);
-    });
+    this.route.queryParamMap
+      .pipe(
+        map(params => params.get(ROUTE_QUERY_PARAMS.SEARCH) ?? ''),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(term => {
+        this.initialTerm.set(term);
+        this.state.search(term);
+      });
   }
 
   /** Handle search input changes — update URL and state */

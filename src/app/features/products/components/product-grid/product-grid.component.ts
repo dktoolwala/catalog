@@ -10,7 +10,7 @@
 
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
-import { Product } from '../../../../core/models';
+import { type Product } from '../../../../core/models';
 import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({

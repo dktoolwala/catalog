@@ -18,9 +18,9 @@
  */
 
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Observable, of, tap, map, catchError } from 'rxjs';
+import { type Observable, of, tap, map, catchError } from 'rxjs';
 
-import { Product, Category } from '../../../core/models';
+import { type Product, type Category } from '../../../core/models';
 import { ProductService } from '../../../core/services/product.service';
 import { CategoryService } from '../../../core/services/category.service';
 
@@ -56,15 +56,16 @@ export class ProductStateService {
     const categoryId = this._selectedCategory();
     const term = this._searchTerm().toLowerCase().trim();
 
-    if (categoryId != null) {
+    if (categoryId !== null && categoryId !== undefined) {
       products = products.filter(p => p.categoryId === categoryId);
     }
 
     if (term) {
-      products = products.filter(p =>
-        p.name.toLowerCase().includes(term) ||
-        p.description.toLowerCase().includes(term) ||
-        p.sku.toLowerCase().includes(term)
+      products = products.filter(
+        p =>
+          p.name.toLowerCase().includes(term) ||
+          p.description.toLowerCase().includes(term) ||
+          p.sku.toLowerCase().includes(term)
       );
     }
 
@@ -128,7 +129,9 @@ export class ProductStateService {
 
     this.categoryService.getCategories().subscribe({
       next: categories => this._categories.set(categories),
-      error: () => {} // Non-critical — filters just won't have categories
+      error: () => {
+        /* Non-critical — filters just won't have categories */
+      }
     });
   }
 

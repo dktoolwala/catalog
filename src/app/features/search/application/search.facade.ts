@@ -21,9 +21,9 @@
  */
 
 import { Injectable, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { type ActivatedRoute, Router } from '@angular/router';
 
-import { Product } from '../../../core/models';
+import { type Product } from '../../../core/models';
 import { ROUTE_QUERY_PARAMS, buildProductDetailUrl } from '../../../core/constants';
 import { SearchStateService } from '../state';
 

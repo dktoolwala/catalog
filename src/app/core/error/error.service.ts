@@ -111,7 +111,7 @@ export class ErrorService {
     // Unknown
     return {
       code: 'UNKNOWN_ERROR',
-      message: this.getUserMessage('UNKNOWN_ERROR')!,
+      message: this.getUserMessage('UNKNOWN_ERROR') ?? 'An unexpected error occurred',
       timestamp: Date.now()
     };
   }

@@ -12,9 +12,11 @@
  * @param params - Record of parameter names to values
  * @returns Query string without leading "?" (e.g., "action=getProducts&slug=abc")
  */
-export function buildQueryString(params: Record<string, string | number | boolean | null | undefined>): string {
+export function buildQueryString(
+  params: Record<string, string | number | boolean | null | undefined>
+): string {
   return Object.entries(params)
-    .filter(([, value]) => value != null)
+    .filter(([, value]) => value !== null && value !== undefined)
     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
     .join('&');
 }

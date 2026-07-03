@@ -1,5 +1,5 @@
 import {
-  ApplicationConfig,
+  type ApplicationConfig,
   ErrorHandler,
   inject,
   isDevMode,

@@ -8,7 +8,7 @@
  * No HTTP calls. No business logic.
  */
 
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 
@@ -23,7 +23,7 @@ import { ROUTE_URLS } from '../../core/constants';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePlaceholderComponent {
-  constructor(private readonly router: Router) {}
+  private readonly router = inject(Router);
 
   protected browseProducts(): void {
     this.router.navigateByUrl(ROUTE_URLS.PRODUCTS);

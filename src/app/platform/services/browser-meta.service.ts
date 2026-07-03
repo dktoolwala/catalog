@@ -7,7 +7,7 @@
  */
 
 import { Injectable, inject } from '@angular/core';
-import { Meta, MetaDefinition } from '@angular/platform-browser';
+import { Meta, type MetaDefinition } from '@angular/platform-browser';
 
 import { RuntimeConfigService } from './runtime-config.service';
 
@@ -64,12 +64,19 @@ export class BrowserMetaService {
   /** Remove all dynamic meta tags */
   clear(): void {
     const selectors = [
-      'name="description"', 'name="keywords"', 'name="author"',
-      'property="og:title"', 'property="og:description"',
-      'property="og:url"', 'property="og:type"',
-      'property="og:image"', 'property="og:site_name"',
-      'name="twitter:card"', 'name="twitter:title"',
-      'name="twitter:description"', 'name="twitter:image"'
+      'name="description"',
+      'name="keywords"',
+      'name="author"',
+      'property="og:title"',
+      'property="og:description"',
+      'property="og:url"',
+      'property="og:type"',
+      'property="og:image"',
+      'property="og:site_name"',
+      'name="twitter:card"',
+      'name="twitter:title"',
+      'name="twitter:description"',
+      'name="twitter:image"'
     ];
     selectors.forEach(sel => this.meta.removeTag(sel));
   }

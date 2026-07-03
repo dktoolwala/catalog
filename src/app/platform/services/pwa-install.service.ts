@@ -7,9 +7,14 @@
 
 import { Injectable, signal } from '@angular/core';
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
+
 @Injectable({ providedIn: 'root' })
 export class PwaInstallService {
-  private deferredPrompt: any = null;
+  private deferredPrompt: BeforeInstallPromptEvent | null = null;
 
   /** Whether the install prompt is available */
   readonly canInstall = signal(false);
@@ -21,7 +26,7 @@ export class PwaInstallService {
   initialize(): void {
     window.addEventListener('beforeinstallprompt', (event: Event) => {
       event.preventDefault();
-      this.deferredPrompt = event;
+      this.deferredPrompt = event as BeforeInstallPromptEvent;
       this.canInstall.set(true);
     });
 

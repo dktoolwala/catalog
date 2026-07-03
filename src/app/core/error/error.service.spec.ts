@@ -29,8 +29,8 @@ describe('ErrorService', () => {
 
     const appError = service.error();
     expect(appError).not.toBeNull();
-    expect(appError!.code).toBe('PRODUCT_NOT_FOUND');
-    expect(appError!.message).toBe('The requested product could not be found.');
+    expect(appError?.code).toBe('PRODUCT_NOT_FOUND');
+    expect(appError?.message).toBe('The requested product could not be found.');
   });
 
   it('should handle standard Error', () => {
@@ -38,8 +38,8 @@ describe('ErrorService', () => {
 
     const appError = service.error();
     expect(appError).not.toBeNull();
-    expect(appError!.code).toBe('UNKNOWN_ERROR');
-    expect(appError!.message).toBe('Something broke');
+    expect(appError?.code).toBe('UNKNOWN_ERROR');
+    expect(appError?.message).toBe('Something broke');
   });
 
   it('should handle unknown error types', () => {
@@ -47,7 +47,7 @@ describe('ErrorService', () => {
 
     const appError = service.error();
     expect(appError).not.toBeNull();
-    expect(appError!.code).toBe('UNKNOWN_ERROR');
+    expect(appError?.code).toBe('UNKNOWN_ERROR');
   });
 
   it('should set error from code and message', () => {
@@ -55,8 +55,10 @@ describe('ErrorService', () => {
 
     const appError = service.error();
     expect(appError).not.toBeNull();
-    expect(appError!.code).toBe('NETWORK_ERROR');
-    expect(appError!.message).toBe('Unable to reach the server. Please check your internet connection.');
+    expect(appError?.code).toBe('NETWORK_ERROR');
+    expect(appError?.message).toBe(
+      'Unable to reach the server. Please check your internet connection.'
+    );
   });
 
   it('should clear error', () => {
@@ -68,7 +70,9 @@ describe('ErrorService', () => {
   });
 
   it('should return user-friendly message for known codes', () => {
-    expect(service.getUserMessage('TIMEOUT_ERROR')).toBe('The request took too long. Please try again.');
+    expect(service.getUserMessage('TIMEOUT_ERROR')).toBe(
+      'The request took too long. Please try again.'
+    );
   });
 
   it('should return undefined for unknown codes', () => {
