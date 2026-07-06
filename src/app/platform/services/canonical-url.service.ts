@@ -25,12 +25,14 @@ export class CanonicalUrlService {
 
   /** Start listening to route changes and updating canonical */
   initialize(): void {
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe(event => {
-      this.setUrl(this.buildCanonicalUrl(event.urlAfterRedirects));
-    });
+    this.router.events
+      .pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(event => {
+        this.setUrl(this.buildCanonicalUrl(event.urlAfterRedirects));
+      });
   }
 
   /** Manually set canonical URL */

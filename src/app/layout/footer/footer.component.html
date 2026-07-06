@@ -3,7 +3,9 @@
     <!-- Brand & About -->
     <div class="footer__section footer__brand">
       <span class="footer__logo">{{ settings()?.companyName || 'DK Tools' }}</span>
-      <p class="footer__tagline">{{ settings()?.companyTagline || 'Quality tools for every need.' }}</p>
+      <p class="footer__tagline">
+        {{ settings()?.companyTagline || 'Quality tools for every need.' }}
+      </p>
     </div>
 
     <!-- Quick Links -->
@@ -30,7 +32,13 @@
         @if (settings()?.whatsappNumber) {
           <li>
             <mat-icon>chat</mat-icon>
-            <a [href]="'https://wa.me/' + settings()!.whatsappNumber" target="_blank" rel="noopener">WhatsApp</a>
+            <a
+              [href]="'https://wa.me/' + settings()!.whatsappNumber"
+              target="_blank"
+              rel="noopener"
+            >
+              WhatsApp
+            </a>
           </li>
         }
         @if (settings()?.supportEmail) {
@@ -59,7 +67,9 @@
 
     <!-- Bottom Bar -->
     <div class="footer__bottom">
-      <span class="footer__copyright">&copy; {{ currentYear }} {{ settings()?.companyName || 'DK Tools' }}. All rights reserved.</span>
+      <span class="footer__copyright">
+        &copy; {{ currentYear }} {{ settings()?.companyName || 'DK Tools' }}. All rights reserved.
+      </span>
       <span class="footer__version">v{{ appVersion }}</span>
     </div>
   </div>

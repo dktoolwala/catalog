@@ -1,13 +1,7 @@
 @if (state.selectedCategory(); as category) {
-  <app-page-header
-    [title]="category.name"
-    subtitle="Browse products in this category"
-  />
+  <app-page-header [title]="category.name" subtitle="Browse products in this category" />
 } @else {
-  <app-page-header
-    title="Category"
-    subtitle="Loading..."
-  />
+  <app-page-header title="Category" subtitle="Loading..." />
 }
 
 <div class="category-products-layout">

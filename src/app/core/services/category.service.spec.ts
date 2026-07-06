@@ -4,7 +4,12 @@ import { provideHttpClientTesting, HttpTestingController } from '@angular/common
 
 import { CategoryService } from './category.service';
 import { RuntimeConfigService } from '../../platform/services/runtime-config.service';
-import { MockRuntimeConfigService, createSuccessResponse, createMockCategories, createErrorResponse } from '../../testing';
+import {
+  MockRuntimeConfigService,
+  createSuccessResponse,
+  createMockCategories,
+  createErrorResponse
+} from '../../testing';
 
 describe('CategoryService', () => {
   let service: CategoryService;
@@ -60,13 +65,16 @@ describe('CategoryService', () => {
 
   it('should handle fetch error', (done: DoneFn) => {
     service.getCategories().subscribe({
-      error: (err) => {
+      error: err => {
         expect(err).toBeDefined();
         done();
       }
     });
 
     const req = httpMock.expectOne(r => r.params.get('action') === 'getCategories');
-    req.flush(createErrorResponse('FETCH_ERROR', 'Failed to fetch'), { status: 400, statusText: 'Bad Request' });
+    req.flush(createErrorResponse('FETCH_ERROR', 'Failed to fetch'), {
+      status: 400,
+      statusText: 'Bad Request'
+    });
   });
 });

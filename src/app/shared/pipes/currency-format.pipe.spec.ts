@@ -23,7 +23,7 @@ describe('CurrencyFormatPipe', () => {
   });
 
   it('should handle decimal values', () => {
-    const result = pipe.transform(99.50);
+    const result = pipe.transform(99.5);
     expect(result).toContain('99');
   });
 

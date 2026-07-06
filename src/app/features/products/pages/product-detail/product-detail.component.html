@@ -7,11 +7,7 @@
 @if (state.selectedProduct(); as product) {
   <article class="detail">
     <div class="detail__image-section">
-      <app-product-image
-        [src]="product.imageUrls[0]"
-        [alt]="product.name"
-        aspectRatio="1 / 1"
-      />
+      <app-product-image [src]="product.imageUrls[0]" [alt]="product.name" aspectRatio="1 / 1" />
     </div>
 
     <div class="detail__info-section">

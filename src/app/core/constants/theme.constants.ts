@@ -14,7 +14,7 @@ export const THEME_MODES = Object.freeze({
 } as const);
 
 /** Type derived from theme mode values */
-export type ThemeMode = typeof THEME_MODES[keyof typeof THEME_MODES];
+export type ThemeMode = (typeof THEME_MODES)[keyof typeof THEME_MODES];
 
 /** CSS classes applied to document body for theming */
 export const THEME_CLASSES = Object.freeze({

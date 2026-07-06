@@ -43,44 +43,46 @@ import { ROUTE_URLS } from '../../core/constants';
       </div>
     </div>
   `,
-  styles: [`
-    .error-page {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      padding: 2rem;
-      text-align: center;
-    }
-    .error-page__content {
-      max-width: 480px;
-    }
-    .error-page__icon {
-      font-size: 72px;
-      width: 72px;
-      height: 72px;
-      color: var(--mat-sys-tertiary, #757575);
-      margin-bottom: 1.5rem;
-    }
-    .error-page__title {
-      font-size: 1.75rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      color: var(--mat-sys-on-surface, #1a1a1a);
-    }
-    .error-page__description {
-      font-size: 1rem;
-      color: var(--mat-sys-on-surface-variant, #666);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-    .error-page__actions {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-  `],
+  styles: [
+    `
+      .error-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        padding: 2rem;
+        text-align: center;
+      }
+      .error-page__content {
+        max-width: 480px;
+      }
+      .error-page__icon {
+        font-size: 72px;
+        width: 72px;
+        height: 72px;
+        color: var(--mat-sys-tertiary, #757575);
+        margin-bottom: 1.5rem;
+      }
+      .error-page__title {
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        color: var(--mat-sys-on-surface, #1a1a1a);
+      }
+      .error-page__description {
+        font-size: 1rem;
+        color: var(--mat-sys-on-surface-variant, #666);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      .error-page__actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    `
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotFoundComponent {

@@ -24,42 +24,48 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
       role="presentation"
     ></div>
   `,
-  styles: [`
-    .skeleton {
-      background: linear-gradient(
-        90deg,
-        var(--mat-sys-surface-variant, #e0e0e0) 25%,
-        var(--mat-sys-surface, #f5f5f5) 50%,
-        var(--mat-sys-surface-variant, #e0e0e0) 75%
-      );
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite ease-in-out;
-      border-radius: 4px;
-
-      &--line {
-        height: 1rem;
-        width: 100%;
-      }
-
-      &--circle {
-        border-radius: 50%;
-      }
-
-      &--card {
-        height: 200px;
-        border-radius: 8px;
-      }
-
-      &--rect {
+  styles: [
+    `
+      .skeleton {
+        background: linear-gradient(
+          90deg,
+          var(--mat-sys-surface-variant, #e0e0e0) 25%,
+          var(--mat-sys-surface, #f5f5f5) 50%,
+          var(--mat-sys-surface-variant, #e0e0e0) 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite ease-in-out;
         border-radius: 4px;
-      }
-    }
 
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-  `],
+        &--line {
+          height: 1rem;
+          width: 100%;
+        }
+
+        &--circle {
+          border-radius: 50%;
+        }
+
+        &--card {
+          height: 200px;
+          border-radius: 8px;
+        }
+
+        &--rect {
+          border-radius: 4px;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+    `
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkeletonComponent {

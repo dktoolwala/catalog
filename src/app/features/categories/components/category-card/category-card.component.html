@@ -7,11 +7,7 @@
   [style.--card-color]="getCardColor()"
 >
   <div class="category-card__visual">
-    <img
-      [src]="getCategoryImage()"
-      [alt]="category().name"
-      class="category-card__img"
-    />
+    <img [src]="getCategoryImage()" [alt]="category().name" class="category-card__img" />
   </div>
   <div class="category-card__content">
     <h3 class="category-card__name">{{ category().name }}</h3>

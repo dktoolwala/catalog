@@ -4,7 +4,11 @@ import { provideHttpClientTesting, HttpTestingController } from '@angular/common
 
 import { HealthService } from './health.service';
 import { RuntimeConfigService } from '../../platform/services/runtime-config.service';
-import { MockRuntimeConfigService, createSuccessResponse, createErrorResponse } from '../../testing';
+import {
+  MockRuntimeConfigService,
+  createSuccessResponse,
+  createErrorResponse
+} from '../../testing';
 
 describe('HealthService', () => {
   let service: HealthService;
@@ -50,13 +54,16 @@ describe('HealthService', () => {
   xit('should handle health check error', (done: DoneFn) => {
     // Skipping - error response format needs verification
     service.checkHealth().subscribe({
-      error: (err) => {
+      error: err => {
         expect(err).toBeDefined();
         done();
       }
     });
 
     const req = httpMock.expectOne(r => r.params.get('action') === 'checkHealth');
-    req.flush(createErrorResponse('HEALTH_CHECK_FAILED', 'Service unavailable'), { status: 503, statusText: 'Service Unavailable' });
+    req.flush(createErrorResponse('HEALTH_CHECK_FAILED', 'Service unavailable'), {
+      status: 503,
+      statusText: 'Service Unavailable'
+    });
   });
 });

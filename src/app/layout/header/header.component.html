@@ -1,11 +1,7 @@
 <header class="header" role="banner">
   <div class="header__inner">
     <!-- Mobile menu toggle -->
-    <button
-      class="header__menu-btn"
-      aria-label="Open navigation menu"
-      (click)="menuToggle.emit()"
-    >
+    <button class="header__menu-btn" aria-label="Open navigation menu" (click)="menuToggle.emit()">
       <mat-icon>menu</mat-icon>
     </button>
 
@@ -46,11 +42,7 @@
     <span class="header__spacer"></span>
 
     <!-- Search entry point -->
-    <a
-      [routerLink]="routes.SEARCH"
-      class="header__search-btn"
-      aria-label="Search products"
-    >
+    <a [routerLink]="routes.SEARCH" class="header__search-btn" aria-label="Search products">
       <mat-icon>search</mat-icon>
       <span class="header__search-text">Search</span>
     </a>

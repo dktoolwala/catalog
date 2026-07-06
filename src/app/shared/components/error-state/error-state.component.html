@@ -6,12 +6,7 @@
 
     <p class="error-state__message">{{ error.message }}</p>
 
-    <button
-      mat-flat-button
-      color="primary"
-      class="error-state__retry"
-      (click)="onRetry()"
-    >
+    <button mat-flat-button color="primary" class="error-state__retry" (click)="onRetry()">
       <mat-icon>refresh</mat-icon>
       Try again
     </button>

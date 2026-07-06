@@ -21,11 +21,7 @@ import { ROUTE_URLS } from '../../core/constants';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    MatIcon
-  ],
+  imports: [RouterLink, RouterLinkActive, MatIcon],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

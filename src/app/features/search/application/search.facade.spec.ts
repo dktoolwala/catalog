@@ -48,9 +48,7 @@ describe('SearchFacade', () => {
   });
 
   it('should expose readonly recentSearches signal', () => {
-    stateService['_recentSearches'].set([
-      { term: 'laptop', timestamp: Date.now() }
-    ]);
+    stateService['_recentSearches'].set([{ term: 'laptop', timestamp: Date.now() }]);
 
     expect(facade.recentSearches().length).toBe(1);
   });

@@ -92,7 +92,8 @@
     gap: 12px;
     margin-top: 8px;
 
-    a, button {
+    a,
+    button {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -106,7 +107,7 @@
     }
 
     a[mat-flat-button] {
-      background: #25D366;
+      background: #25d366;
       color: white;
       border: none;
       box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);

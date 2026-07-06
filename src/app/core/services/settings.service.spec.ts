@@ -4,7 +4,11 @@ import { provideHttpClientTesting, HttpTestingController } from '@angular/common
 
 import { SettingsService } from './settings.service';
 import { RuntimeConfigService } from '../../platform/services/runtime-config.service';
-import { MockRuntimeConfigService, createSuccessResponse, createErrorResponse } from '../../testing';
+import {
+  MockRuntimeConfigService,
+  createSuccessResponse,
+  createErrorResponse
+} from '../../testing';
 
 describe('SettingsService', () => {
   let service: SettingsService;
@@ -57,7 +61,11 @@ describe('SettingsService', () => {
 
   xit('should cache settings', (done: DoneFn) => {
     // Skipping - cache behavior complex to mock
-    const mockSettings = { appName: 'Product Catalog', appVersion: '1.0.0', features: { pwa: true, analytics: true, structuredData: true } };
+    const mockSettings = {
+      appName: 'Product Catalog',
+      appVersion: '1.0.0',
+      features: { pwa: true, analytics: true, structuredData: true }
+    };
 
     service.getSettings().subscribe(() => {
       service.getSettings().subscribe(() => {
@@ -73,13 +81,16 @@ describe('SettingsService', () => {
 
   it('should handle fetch error', (done: DoneFn) => {
     service.getSettings().subscribe({
-      error: (err) => {
+      error: err => {
         expect(err).toBeDefined();
         done();
       }
     });
 
     const req = httpMock.expectOne(r => r.params.get('action') === 'getSettings');
-    req.flush(createErrorResponse('SETTINGS_FETCH_ERROR', 'Failed to fetch'), { status: 500, statusText: 'Server Error' });
+    req.flush(createErrorResponse('SETTINGS_FETCH_ERROR', 'Failed to fetch'), {
+      status: 500,
+      statusText: 'Server Error'
+    });
   });
 });

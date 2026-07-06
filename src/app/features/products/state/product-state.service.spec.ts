@@ -4,7 +4,11 @@ import { Observable, of } from 'rxjs';
 import { ProductStateService } from './product-state.service';
 import { ProductService } from '../../../core/services/product.service';
 import { CategoryService } from '../../../core/services/category.service';
-import { MockRuntimeConfigService, createMockProducts, createMockCategories } from '../../../testing';
+import {
+  MockRuntimeConfigService,
+  createMockProducts,
+  createMockCategories
+} from '../../../testing';
 import { RuntimeConfigService } from '../../../platform/services/runtime-config.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
@@ -80,11 +84,14 @@ describe('ProductStateService', () => {
     expect(service.searchTerm()).toBe('laptop');
     const filtered = service.filteredProducts();
     expect(filtered.length).toBeGreaterThan(0);
-    expect(filtered.every(p => 
-      p.name.toLowerCase().includes('laptop') ||
-      p.description.toLowerCase().includes('laptop') ||
-      p.sku.toLowerCase().includes('laptop')
-    )).toBe(true);
+    expect(
+      filtered.every(
+        p =>
+          p.name.toLowerCase().includes('laptop') ||
+          p.description.toLowerCase().includes('laptop') ||
+          p.sku.toLowerCase().includes('laptop')
+      )
+    ).toBe(true);
   });
 
   xit('should set selected category and filter products', () => {
@@ -178,7 +185,7 @@ describe('ProductStateService', () => {
   it('should clear selected product', () => {
     const mockProducts = createMockProducts();
     service['_selectedProduct'].set(mockProducts[0]);
-    
+
     service.clearSelectedProduct();
 
     expect(service.selectedProduct()).toBeNull();

@@ -1,7 +1,4 @@
-<app-page-header
-  title="Search Products"
-  subtitle="Find what you're looking for"
-/>
+<app-page-header title="Search Products" subtitle="Find what you're looking for" />
 
 <!-- Search Input -->
 <section class="search-input-section" aria-label="Search input">
@@ -25,13 +22,13 @@
 
 <!-- Content -->
 @if (!state.loading() && !state.error()) {
-
   <!-- Results when searching -->
   @if (state.hasActiveTerm()) {
     @if (state.hasResults()) {
       <p class="search-results-count" aria-live="polite">
-        {{ state.resultCount() }} result{{ state.resultCount() === 1 ? '' : 's' }}
-        for "{{ state.searchTerm() }}"
+        {{ state.resultCount() }} result{{ state.resultCount() === 1 ? '' : 's' }} for "{{
+          state.searchTerm()
+        }}"
       </p>
 
       <app-product-grid
@@ -41,12 +38,13 @@
     } @else {
       <app-empty-state
         title="No results found"
-        [message]="'No products match \u0022' + state.searchTerm() + '\u0022. Try a different search term.'"
+        [message]="
+          'No products match \u0022' + state.searchTerm() + '\u0022. Try a different search term.'
+        "
         icon="search_off"
       />
     }
   } @else {
-
     <!-- Recent searches when no active query -->
     @if (state.recentSearches().length > 0) {
       <section class="recent-searches" aria-label="Recent searches">

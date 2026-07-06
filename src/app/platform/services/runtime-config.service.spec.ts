@@ -64,9 +64,7 @@ describe('RuntimeConfigService', () => {
   });
 
   it('should fall back to defaults on fetch error', async () => {
-    spyOn(window, 'fetch').and.returnValue(
-      Promise.reject(new Error('Network error'))
-    );
+    spyOn(window, 'fetch').and.returnValue(Promise.reject(new Error('Network error')));
 
     await service.load();
 
@@ -75,9 +73,7 @@ describe('RuntimeConfigService', () => {
   });
 
   it('should fall back to defaults on non-200 response', async () => {
-    spyOn(window, 'fetch').and.returnValue(
-      Promise.resolve(new Response(null, { status: 404 }))
-    );
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve(new Response(null, { status: 404 })));
 
     await service.load();
 
@@ -102,9 +98,7 @@ describe('RuntimeConfigService', () => {
   });
 
   it('should mark loaded=true even on error', async () => {
-    spyOn(window, 'fetch').and.returnValue(
-      Promise.reject(new Error('Error'))
-    );
+    spyOn(window, 'fetch').and.returnValue(Promise.reject(new Error('Error')));
 
     await service.load();
 

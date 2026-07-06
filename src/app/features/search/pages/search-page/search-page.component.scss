@@ -105,7 +105,7 @@
   }
 
   &__icon {
-    font-family: 'Material Icons';
+    font-family: "Material Icons";
     font-size: 1.125rem;
     color: var(--color-text-tertiary, #94a3b8);
   }
@@ -120,7 +120,7 @@
     width: 2rem;
     height: 2rem;
     border-radius: var(--radius-full, 9999px);
-    font-family: 'Material Icons';
+    font-family: "Material Icons";
     font-size: 1.125rem;
     color: var(--color-text-tertiary, #94a3b8);
     transition: all var(--transition-fast);

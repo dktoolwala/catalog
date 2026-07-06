@@ -4,7 +4,11 @@ import { Observable, of } from 'rxjs';
 import { CategoryStateService } from './category-state.service';
 import { ProductStateService } from '../../products/state';
 import { CategoryService } from '../../../core/services/category.service';
-import { MockRuntimeConfigService, createMockCategories, createMockProducts } from '../../../testing';
+import {
+  MockRuntimeConfigService,
+  createMockCategories,
+  createMockProducts
+} from '../../../testing';
 import { RuntimeConfigService } from '../../../platform/services/runtime-config.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';

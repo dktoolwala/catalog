@@ -30,7 +30,7 @@ describe('retryInterceptor', () => {
 
   it('should not retry 4xx errors', (done: DoneFn) => {
     http.get('/api').subscribe({
-      error: (err) => {
+      error: err => {
         expect(err.status).toBe(404);
         done();
       }
@@ -40,7 +40,7 @@ describe('retryInterceptor', () => {
 
   it('should not retry 500 errors', (done: DoneFn) => {
     http.get('/api').subscribe({
-      error: (err) => {
+      error: err => {
         expect(err.status).toBe(500);
         done();
       }

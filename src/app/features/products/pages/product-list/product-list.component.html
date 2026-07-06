@@ -1,7 +1,4 @@
-<app-page-header
-  title="Products"
-  subtitle="Browse our complete catalog"
-/>
+<app-page-header title="Products" subtitle="Browse our complete catalog" />
 
 <!-- Filters -->
 <app-product-filters
@@ -24,10 +21,7 @@
 <!-- Content -->
 @if (!state.loading() && !state.error()) {
   @if (state.filteredProducts().length > 0) {
-    <app-product-toolbar
-      [filteredCount]="state.productCount()"
-      [totalCount]="state.totalCount()"
-    />
+    <app-product-toolbar [filteredCount]="state.productCount()" [totalCount]="state.totalCount()" />
 
     <app-product-grid
       [products]="state.filteredProducts()"

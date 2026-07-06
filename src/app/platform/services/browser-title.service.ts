@@ -19,9 +19,7 @@ export class BrowserTitleService {
   /** Set page title with app name suffix */
   set(pageTitle: string): void {
     const appName = this.config.appTitle;
-    const fullTitle = pageTitle
-      ? `${pageTitle} | ${appName}`
-      : appName;
+    const fullTitle = pageTitle ? `${pageTitle} | ${appName}` : appName;
     this.title.setTitle(fullTitle);
   }
 

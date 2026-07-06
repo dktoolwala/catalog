@@ -7,7 +7,13 @@
  */
 
 import { Component, ChangeDetectionStrategy, inject, signal, DestroyRef } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import {
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+  NavigationError
+} from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -20,30 +26,38 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
       </div>
     }
   `,
-  styles: [`
-    .route-loading {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      z-index: 9999;
-      overflow: hidden;
-    }
+  styles: [
+    `
+      .route-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        z-index: 9999;
+        overflow: hidden;
+      }
 
-    .route-loading__bar {
-      height: 100%;
-      background: var(--mat-sys-primary, #1976d2);
-      animation: loading 1.5s ease-in-out infinite;
-      transform-origin: left;
-    }
+      .route-loading__bar {
+        height: 100%;
+        background: var(--mat-sys-primary, #1976d2);
+        animation: loading 1.5s ease-in-out infinite;
+        transform-origin: left;
+      }
 
-    @keyframes loading {
-      0% { transform: translateX(-100%) scaleX(0.3); }
-      40% { transform: translateX(20%) scaleX(0.6); }
-      100% { transform: translateX(100%) scaleX(0.3); }
-    }
-  `],
+      @keyframes loading {
+        0% {
+          transform: translateX(-100%) scaleX(0.3);
+        }
+        40% {
+          transform: translateX(20%) scaleX(0.6);
+        }
+        100% {
+          transform: translateX(100%) scaleX(0.3);
+        }
+      }
+    `
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RouteLoadingIndicatorComponent {
@@ -53,9 +67,7 @@ export class RouteLoadingIndicatorComponent {
   protected readonly loading = signal(false);
 
   constructor() {
-    this.router.events.pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe(event => {
+    this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(event => {
       if (event instanceof NavigationStart) {
         this.loading.set(true);
       } else if (

@@ -67,12 +67,14 @@ export class SearchBoxComponent {
       }
     });
 
-    toObservable(this.searchTerm).pipe(
-      skip(1),
-      debounceTime(this.debounceMs()),
-      distinctUntilChanged(),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe(term => this.searchChange.emit(term));
+    toObservable(this.searchTerm)
+      .pipe(
+        skip(1),
+        debounceTime(this.debounceMs()),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(term => this.searchChange.emit(term));
   }
 
   protected onInput(event: Event): void {
