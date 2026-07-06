@@ -440,6 +440,10 @@ EXPOSE 80
 | typescript                | ~5.8.0  |
 | zone.js                   | ~0.15.0 |
 
+## Badges
+![CI](https://github.com/dktoolwala/catalog/actions/workflows/ci.yml/badge.svg)
+![Deploy](https://github.com/dktoolwala/catalog/actions/workflows/deploy.yml/badge.svg)
+
 ## Remaining Work
 
 After workspace setup, the only remaining work is:
