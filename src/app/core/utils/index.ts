@@ -2,14 +2,14 @@
  * Utilities Barrel Export
  */
 
-export { generateUuid } from './uuid.util';
-export { buildQueryString, appendQueryParams, replacePathParam } from './url.util';
-export { nowISO, formatDisplayDate, getRelativeTime, isValidDate } from './date.util';
+export { formatDisplayDate, getRelativeTime, isValidDate, nowISO } from './date.util';
 export {
   capitalize,
-  truncate,
+  formatPhoneNumber,
+  isBlank,
   slugify,
   stripHtml,
-  isBlank,
-  formatPhoneNumber
+  truncate
 } from './string.util';
+export { appendQueryParams, buildQueryString, replacePathParam, resolveImageUrl } from './url.util';
+export { generateUuid } from './uuid.util';

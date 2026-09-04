@@ -52,3 +52,46 @@ export function appendQueryParams(
 export function replacePathParam(template: string, param: string, value: string): string {
   return template.replace(`:${param}`, encodeURIComponent(value));
 }
+
+/**
+ * Extracts the file ID from a Google Drive share/view URL.
+ * Supports the common share link formats:
+ *   - https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+ *   - https://drive.google.com/open?id=FILE_ID
+ *   - https://drive.google.com/uc?id=FILE_ID
+ *
+ * @param url - A Google Drive URL
+ * @returns The extracted file ID, or null if the URL doesn't match a known Drive pattern
+ */
+export function extractGoogleDriveFileId(url: string): string | null {
+  const fileMatch = /\/file\/d\/([a-zA-Z0-9_-]+)/.exec(url);
+  if (fileMatch) return fileMatch[1];
+
+  const idParamMatch = /[?&]id=([a-zA-Z0-9_-]+)/.exec(url);
+  if (idParamMatch) return idParamMatch[1];
+
+  return null;
+}
+
+/**
+ * Converts a Google Drive share/view link into a direct-image URL that can be
+ * used as an <img> src. Raw share links (.../file/d/ID/view) return an HTML
+ * page rather than image bytes, so browsers block them (ORB). Non-Drive URLs
+ * are returned unchanged.
+ *
+ * @param url - Any image URL, possibly a Google Drive share link
+ * @param size - Requested thumbnail width in pixels (default 1000)
+ * @returns A direct-image URL safe to use as an <img> src
+ */
+export function resolveImageUrl(url: string, size = 1000): string {
+  if (!url.includes('drive.google.com')) {
+    return url;
+  }
+
+  const fileId = extractGoogleDriveFileId(url);
+  if (!fileId) {
+    return url;
+  }
+
+  return `https://drive.google.com/thumbnail?id=${fileId}&sz=w${size}`;
+}

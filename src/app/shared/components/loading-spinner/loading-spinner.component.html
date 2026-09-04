@@ -1,11 +1,21 @@
 @if (loadingService.loading()) {
   @if (overlay()) {
     <div class="loading-overlay" role="alert" aria-busy="true" aria-label="Loading content">
-      <mat-spinner [diameter]="diameter()" />
+      <div
+        class="spinner-ring"
+        [style.width.px]="diameter()"
+        [style.height.px]="diameter()"
+        [style.border-width.px]="strokeWidth()"
+      ></div>
     </div>
   } @else {
     <div class="loading-inline" role="alert" aria-busy="true" aria-label="Loading content">
-      <mat-spinner [diameter]="diameter()" />
+      <div
+        class="spinner-ring"
+        [style.width.px]="diameter()"
+        [style.height.px]="diameter()"
+        [style.border-width.px]="strokeWidth()"
+      ></div>
     </div>
   }
 }

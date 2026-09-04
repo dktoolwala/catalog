@@ -16,14 +16,13 @@
  *   Page → reads state signals → delegates to presentation components
  */
 
-import { Component, ChangeDetectionStrategy, inject, type OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, type OnDestroy } from '@angular/core';
 
 import { type Product } from '../../../../core/models';
 import {
-  PageHeaderComponent,
-  LoadingSpinnerComponent,
   EmptyStateComponent,
-  ErrorStateComponent
+  ErrorStateComponent,
+  PageHeaderComponent
 } from '../../../../shared/components';
 import { ProductGridComponent } from '../../../products/components/product-grid/product-grid.component';
 import { ProductToolbarComponent } from '../../../products/components/product-toolbar/product-toolbar.component';
@@ -35,7 +34,6 @@ import { CategorySidebarComponent } from '../../components/category-sidebar/cate
   standalone: true,
   imports: [
     PageHeaderComponent,
-    LoadingSpinnerComponent,
     EmptyStateComponent,
     ErrorStateComponent,
     ProductGridComponent,

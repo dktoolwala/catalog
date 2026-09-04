@@ -8,7 +8,7 @@
  * Presentation only — no services, no HTTP.
  */
 
-import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 import { type Product } from '../../../../core/models';
 import { ProductCardComponent } from '../product-card/product-card.component';
@@ -24,6 +24,9 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 export class ProductGridComponent {
   /** Array of products to display */
   readonly products = input.required<readonly Product[]>();
+
+  /** Whether to display product prices */
+  readonly showPrices = input<boolean>(true);
 
   /** Emitted when a product card is clicked */
   readonly productSelected = output<Product>();

@@ -11,18 +11,17 @@
  * Presentation is delegated to child components.
  */
 
-import { Component, ChangeDetectionStrategy, inject, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, type OnInit } from '@angular/core';
 
 import { type Product } from '../../../../core/models';
 import {
-  PageHeaderComponent,
-  LoadingSpinnerComponent,
   EmptyStateComponent,
-  ErrorStateComponent
+  ErrorStateComponent,
+  PageHeaderComponent
 } from '../../../../shared/components';
 import { ProductFacade } from '../../application';
-import { ProductGridComponent } from '../../components/product-grid/product-grid.component';
 import { ProductFiltersComponent } from '../../components/product-filters/product-filters.component';
+import { ProductGridComponent } from '../../components/product-grid/product-grid.component';
 import { ProductToolbarComponent } from '../../components/product-toolbar/product-toolbar.component';
 
 @Component({
@@ -30,7 +29,6 @@ import { ProductToolbarComponent } from '../../components/product-toolbar/produc
   standalone: true,
   imports: [
     PageHeaderComponent,
-    LoadingSpinnerComponent,
     EmptyStateComponent,
     ErrorStateComponent,
     ProductGridComponent,
@@ -47,6 +45,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.state.loadProducts();
     this.state.loadCategories();
+    this.state.loadSettings();
   }
 
   protected onProductSelected(product: Product): void {

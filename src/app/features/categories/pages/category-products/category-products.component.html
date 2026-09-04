@@ -15,11 +15,6 @@
 
   <!-- Main content -->
   <main class="category-products-layout__content">
-    <!-- Loading -->
-    @if (state.productsLoading()) {
-      <app-loading-spinner />
-    }
-
     <!-- Error -->
     @if (state.productsError() && !state.productsLoading()) {
       <app-error-state (retry)="onRetry()" />

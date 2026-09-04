@@ -8,6 +8,8 @@
 
 import { Pipe, type PipeTransform } from '@angular/core';
 
+import { resolveImageUrl } from '../../core/utils';
+
 @Pipe({
   name: 'safeImage',
   standalone: true,
@@ -28,7 +30,7 @@ export class SafeImagePipe implements PipeTransform {
       url.startsWith('/') ||
       url.startsWith('assets/')
     ) {
-      return url;
+      return resolveImageUrl(url);
     }
 
     return this.placeholder;

@@ -12,15 +12,21 @@
  *   - Back to products navigation
  */
 
-import { Component, ChangeDetectionStrategy, inject, type OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  type OnDestroy,
+  type OnInit
+} from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatChip } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
 
 import { WHATSAPP } from '../../../../core/constants';
-import { CurrencyFormatPipe } from '../../../../shared/pipes';
 import { EmptyStateComponent } from '../../../../shared/components';
+import { CurrencyFormatPipe } from '../../../../shared/pipes';
 import { ProductFacade } from '../../application';
 import { ProductImageComponent } from '../../components/product-image/product-image.component';
 
@@ -39,9 +45,13 @@ import { ProductImageComponent } from '../../components/product-image/product-im
   styleUrl: './product-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductDetailComponent implements OnDestroy {
+export class ProductDetailComponent implements OnInit, OnDestroy {
   protected readonly state = inject(ProductFacade);
   private readonly location = inject(Location);
+
+  ngOnInit(): void {
+    this.state.loadSettings();
+  }
 
   ngOnDestroy(): void {
     this.state.clearSelectedProduct();

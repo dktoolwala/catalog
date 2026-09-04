@@ -116,6 +116,8 @@
 
   &__image {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: var(--radius-xl, 24px);
     box-shadow: var(--shadow-xl);
   }
@@ -199,43 +201,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-}
-
-.category-preview-card {
-  position: relative;
-  border-radius: var(--radius-lg, 16px);
-  overflow: hidden;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-
-  img {
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
-  }
-
-  &__name {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    padding: 6px 14px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-    border-radius: var(--radius-full, 9999px);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-text-primary, #0f172a);
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-
-    img {
-      transform: scale(1.05);
-    }
-  }
 }
 
 // ─── CTA Banner ────────────────────────────────────────

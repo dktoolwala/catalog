@@ -9,7 +9,7 @@
  * No service injection.
  */
 
-import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 import { type Category } from '../../../../core/models';
@@ -51,6 +51,7 @@ const CATEGORY_TEXT_COLORS = [
 export class CategoryCardComponent {
   readonly category = input.required<Category>();
   readonly productCount = input<number>(0);
+  readonly showCount = input<boolean>(true);
   readonly selected = output<Category>();
 
   protected getCardColor(): string {

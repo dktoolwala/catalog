@@ -15,7 +15,9 @@
 
       <h1 class="detail__name">{{ product.name }}</h1>
 
-      <p class="detail__price">{{ product.price | currencyFormat }}</p>
+      @if (state.showPrices()) {
+        <p class="detail__price">{{ product.price | currencyFormat }}</p>
+      }
 
       @if (product.description) {
         <p class="detail__description">{{ product.description }}</p>

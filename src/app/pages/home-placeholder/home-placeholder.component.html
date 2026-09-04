@@ -6,12 +6,9 @@
       <h1 class="hero__title">
         Discover Our
         <br />
-        <span class="hero__title-accent">Premium Collection</span>
+        <span class="hero__title-accent">{{ heroTitle() }}</span>
       </h1>
-      <p class="hero__subtitle">
-        Curated products with quality you can trust. Browse our catalog and find exactly what you
-        need.
-      </p>
+      <p class="hero__subtitle">{{ heroSubtitle() }}</p>
       <div class="hero__actions">
         <button mat-flat-button class="hero__cta-primary" (click)="browseProducts()">
           Browse Products
@@ -24,8 +21,12 @@
     </div>
     <div class="hero__visual">
       <img
-        src="https://placehold.co/560x420/EEF2FF/4F46E5?font=montserrat&text=Featured+Products"
-        alt="Featured products showcase"
+        [src]="
+          heroImageUrl() ??
+            'https://placehold.co/560x420/EEF2FF/4F46E5?font=montserrat&text=New+Arrivals'
+            | safeImage
+        "
+        alt="Featured product"
         class="hero__image"
       />
     </div>
@@ -61,58 +62,13 @@
       </a>
     </div>
     <div class="categories-preview">
-      <div
-        class="category-preview-card"
-        role="button"
-        tabindex="0"
-        (click)="browseCategories()"
-        (keydown.enter)="browseCategories()"
-      >
-        <img
-          src="https://placehold.co/300x200/DCFCE7/166534?font=montserrat&text=Electronics"
-          alt="Electronics"
+      @for (category of categories(); track category.id) {
+        <app-category-card
+          [category]="category"
+          [showCount]="false"
+          (selected)="onCategorySelected($event)"
         />
-        <span class="category-preview-card__name">Electronics</span>
-      </div>
-      <div
-        class="category-preview-card"
-        role="button"
-        tabindex="0"
-        (click)="browseCategories()"
-        (keydown.enter)="browseCategories()"
-      >
-        <img
-          src="https://placehold.co/300x200/FEF3C7/92400E?font=montserrat&text=Fashion"
-          alt="Fashion"
-        />
-        <span class="category-preview-card__name">Fashion</span>
-      </div>
-      <div
-        class="category-preview-card"
-        role="button"
-        tabindex="0"
-        (click)="browseCategories()"
-        (keydown.enter)="browseCategories()"
-      >
-        <img
-          src="https://placehold.co/300x200/E0E7FF/3730A3?font=montserrat&text=Home+%26+Living"
-          alt="Home & Living"
-        />
-        <span class="category-preview-card__name">Home & Living</span>
-      </div>
-      <div
-        class="category-preview-card"
-        role="button"
-        tabindex="0"
-        (click)="browseCategories()"
-        (keydown.enter)="browseCategories()"
-      >
-        <img
-          src="https://placehold.co/300x200/FCE7F3/9D174D?font=montserrat&text=Accessories"
-          alt="Accessories"
-        />
-        <span class="category-preview-card__name">Accessories</span>
-      </div>
+      }
     </div>
   </section>
 

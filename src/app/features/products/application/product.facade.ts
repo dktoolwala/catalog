@@ -24,13 +24,15 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { type Observable } from 'rxjs';
 
-import { type Product } from '../../../core/models';
 import { buildProductDetailUrl } from '../../../core/constants';
+import { type Product } from '../../../core/models';
+import { SettingsStateService } from '../../../core/state';
 import { ProductStateService } from '../state';
 
 @Injectable({ providedIn: 'root' })
 export class ProductFacade {
   private readonly state = inject(ProductStateService);
+  private readonly settingsState = inject(SettingsStateService);
   private readonly router = inject(Router);
 
   // ─── Exposed Signals (readonly) ──────────────────────────────
@@ -45,12 +47,18 @@ export class ProductFacade {
   readonly filteredProducts = this.state.filteredProducts;
   readonly productCount = this.state.productCount;
   readonly totalCount = this.state.totalCount;
+  readonly showPrices = this.settingsState.showPrices;
 
   // ─── Actions ─────────────────────────────────────────────────
 
   /** Load all products (cached, no-op if already loaded) */
   loadProducts(): void {
     this.state.loadProducts();
+  }
+
+  /** Load application settings (cached, no-op if already loaded) */
+  loadSettings(): void {
+    this.settingsState.loadSettings();
   }
 
   /** Load a single product by slug (for resolvers) */

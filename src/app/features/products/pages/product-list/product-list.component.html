@@ -8,11 +8,6 @@
   (categoryChange)="state.setSelectedCategory($event)"
 />
 
-<!-- Loading -->
-@if (state.loading()) {
-  <app-loading-spinner />
-}
-
 <!-- Error -->
 @if (state.error() && !state.loading()) {
   <app-error-state (retry)="onRetry()" />
@@ -25,6 +20,7 @@
 
     <app-product-grid
       [products]="state.filteredProducts()"
+      [showPrices]="state.showPrices()"
       (productSelected)="onProductSelected($event)"
     />
   } @else if (state.products().length > 0) {

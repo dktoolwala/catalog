@@ -24,4 +24,5 @@ export interface Settings {
   readonly mapLink: string;
   readonly logoUrl: string;
   readonly primaryColor: string;
+  readonly showPrices: boolean;
 }

@@ -9,14 +9,14 @@
  * Knows NOTHING about specific features (Products, Categories, etc.).
  */
 
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+import { RouterOutlet } from '@angular/router';
 
-import { LoadingSpinnerComponent, ErrorStateComponent } from '../../shared/components';
+import { ErrorStateComponent, LoadingSpinnerComponent } from '../../shared/components';
+import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { NavigationComponent } from '../navigation/navigation.component';
-import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-shell',

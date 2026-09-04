@@ -15,31 +15,29 @@
  * Reuses:
  *   - SearchBoxComponent (shared)
  *   - ProductGridComponent (products feature)
- *   - LoadingSpinnerComponent (shared)
  *   - EmptyStateComponent (shared)
  *   - ErrorStateComponent (shared)
  *   - PageHeaderComponent (shared)
  */
 
 import {
-  Component,
   ChangeDetectionStrategy,
+  Component,
   DestroyRef,
   inject,
   type OnInit,
   signal
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 import { distinctUntilChanged, map } from 'rxjs';
 
-import { type Product } from '../../../../core/models';
 import { ROUTE_QUERY_PARAMS } from '../../../../core/constants';
+import { type Product } from '../../../../core/models';
 import {
-  PageHeaderComponent,
-  LoadingSpinnerComponent,
   EmptyStateComponent,
   ErrorStateComponent,
+  PageHeaderComponent,
   SearchBoxComponent
 } from '../../../../shared/components';
 import { ProductGridComponent } from '../../../products/components/product-grid/product-grid.component';
@@ -50,7 +48,6 @@ import { SearchFacade } from '../../application';
   standalone: true,
   imports: [
     PageHeaderComponent,
-    LoadingSpinnerComponent,
     EmptyStateComponent,
     ErrorStateComponent,
     SearchBoxComponent,

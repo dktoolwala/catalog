@@ -11,14 +11,13 @@
  * Presentation is delegated to child components.
  */
 
-import { Component, ChangeDetectionStrategy, inject, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, type OnInit } from '@angular/core';
 
 import { type Category } from '../../../../core/models';
 import {
-  PageHeaderComponent,
-  LoadingSpinnerComponent,
   EmptyStateComponent,
-  ErrorStateComponent
+  ErrorStateComponent,
+  PageHeaderComponent
 } from '../../../../shared/components';
 import { CategoryFacade } from '../../application';
 import { CategoryGridComponent } from '../../components/category-grid/category-grid.component';
@@ -26,13 +25,7 @@ import { CategoryGridComponent } from '../../components/category-grid/category-g
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [
-    PageHeaderComponent,
-    LoadingSpinnerComponent,
-    EmptyStateComponent,
-    ErrorStateComponent,
-    CategoryGridComponent
-  ],
+  imports: [PageHeaderComponent, EmptyStateComponent, ErrorStateComponent, CategoryGridComponent],
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

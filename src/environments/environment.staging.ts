@@ -12,7 +12,7 @@ import { type AppConfig } from '../app/core/models/app-config.model';
 export const environment: AppConfig = {
   production: false,
   apiBaseUrl:
-    'https://script.google.com/macros/s/AKfycbz1SkY1eunuAdLMyzFW4BbG-fwIVx6VKbl6BHk1lA9jcU9Tzw9ERc674TmNKeE2-QvcXg/exec',
+    'https://script.google.com/macros/s/AKfycbxOwPnsvmkfYFbS45shoKF378Ws4yncVDIs8jG-Z7UGln6KFFtC_00tPFlEHb4htSMCCg/exec',
   imageBaseUrl: 'https://drive.google.com/thumbnail',
   appName: 'DK Tools',
   appVersion: '1.0.0-staging',

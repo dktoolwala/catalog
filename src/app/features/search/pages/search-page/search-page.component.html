@@ -10,11 +10,6 @@
   />
 </section>
 
-<!-- Loading -->
-@if (state.loading()) {
-  <app-loading-spinner />
-}
-
 <!-- Error -->
 @if (state.error() && !state.loading()) {
   <app-error-state (retry)="onRetry()" />

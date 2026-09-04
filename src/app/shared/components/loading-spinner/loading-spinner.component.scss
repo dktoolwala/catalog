@@ -19,3 +19,17 @@
   justify-content: center;
   padding: 48px;
 }
+
+.spinner-ring {
+  border-style: solid;
+  border-color: var(--color-primary, #2563eb);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner-rotate 0.8s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

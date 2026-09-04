@@ -35,20 +35,20 @@ A production-ready Angular 20 product catalog application with PWA support, powe
 
 ## Tech Stack
 
-| Layer        | Technology                        |
-| ------------ | --------------------------------- |
-| Framework    | Angular 20                        |
-| Language     | TypeScript 5.8                    |
-| UI Library   | Angular Material 20               |
-| State        | Signals (built-in)                |
-| Styling      | SCSS + CSS Variables              |
-| HTTP         | Angular HttpClient + Interceptors |
-| PWA          | @angular/service-worker           |
-| Backend      | Google Apps Script                |
-| Linting      | ESLint (flat config) + Prettier   |
-| Testing      | Karma + Jasmine                   |
-| Node         | >= 20.x                           |
-| npm          | >= 10.x                           |
+| Layer      | Technology                        |
+| ---------- | --------------------------------- |
+| Framework  | Angular 20                        |
+| Language   | TypeScript 5.8                    |
+| UI Library | Angular Material 20               |
+| State      | Signals (built-in)                |
+| Styling    | SCSS + CSS Variables              |
+| HTTP       | Angular HttpClient + Interceptors |
+| PWA        | @angular/service-worker           |
+| Backend    | Google Apps Script                |
+| Linting    | ESLint (flat config) + Prettier   |
+| Testing    | Karma + Jasmine                   |
+| Node       | >= 20.x                           |
+| npm        | >= 10.x                           |
 
 ## Prerequisites
 
@@ -146,12 +146,12 @@ src/
 
 ## Environment Configuration
 
-| File                          | Purpose              | Key Differences                         |
-| ----------------------------- | -------------------- | --------------------------------------- |
-| `environment.ts`              | Production (default) | Logging off, analytics on, debug off    |
-| `environment.development.ts`  | Local development    | Logging on, analytics off, debug on     |
-| `environment.staging.ts`      | Staging / QA         | Logging on, analytics on, debug off     |
-| `environment.production.ts`   | Production (explicit)| Identical to default, for CI clarity    |
+| File                         | Purpose               | Key Differences                      |
+| ---------------------------- | --------------------- | ------------------------------------ |
+| `environment.ts`             | Production (default)  | Logging off, analytics on, debug off |
+| `environment.development.ts` | Local development     | Logging on, analytics off, debug on  |
+| `environment.staging.ts`     | Staging / QA          | Logging on, analytics on, debug off  |
+| `environment.production.ts`  | Production (explicit) | Identical to default, for CI clarity |
 
 ### AppConfig Interface
 
@@ -203,10 +203,10 @@ npm audit
 
 ### Bundle Budgets
 
-| Type    | Warning | Error |
-| ------- | ------- | ----- |
-| Initial | 700 kB  | 1 MB  |
-| Component Style | 8 kB | 16 kB |
+| Type            | Warning | Error |
+| --------------- | ------- | ----- |
+| Initial         | 700 kB  | 1 MB  |
+| Component Style | 8 kB    | 16 kB |
 
 ## Testing
 
@@ -224,6 +224,7 @@ npm run test:coverage
 ### Coverage Target: 80%+
 
 Test utilities are in `src/app/testing/`:
+
 - `test-utils.ts` — Signal helpers, fixture utilities, DOM queries
 - `mock-data.ts` — Factory functions for Products, Categories, Settings
 - `mock-api-responses.ts` — API response envelope factories
@@ -312,14 +313,15 @@ npm run deps:licenses
 
 ## Error Pages
 
-| Route                  | Component              | Trigger                            |
-| ---------------------- | ---------------------- | ---------------------------------- |
-| `/not-found`           | NotFoundComponent      | Unknown routes, wildcard redirect  |
-| `/error`               | ServerErrorComponent   | Unhandled exceptions (500)         |
-| `/offline`             | OfflineComponent       | Browser loses connectivity         |
-| `/service-unavailable` | ApiUnavailableComponent| 5xx, network timeout, unreachable  |
+| Route                  | Component               | Trigger                           |
+| ---------------------- | ----------------------- | --------------------------------- |
+| `/not-found`           | NotFoundComponent       | Unknown routes, wildcard redirect |
+| `/error`               | ServerErrorComponent    | Unhandled exceptions (500)        |
+| `/offline`             | OfflineComponent        | Browser loses connectivity        |
+| `/service-unavailable` | ApiUnavailableComponent | 5xx, network timeout, unreachable |
 
 ### Features
+
 - **Auto-recovery**: Offline page detects reconnection and redirects
 - **Exponential backoff**: API Unavailable retries with increasing delay
 - **Navigation safety**: GlobalErrorHandler routes to correct page
@@ -329,10 +331,10 @@ npm run deps:licenses
 
 ### GitHub Actions Workflows
 
-| Workflow | File | Trigger |
-| -------- | ---- | ------- |
-| CI Pipeline | `.github/workflows/ci.yml` | PRs + push to main/develop |
-| Deploy | `.github/workflows/deploy.yml` | Push to main |
+| Workflow    | File                           | Trigger                    |
+| ----------- | ------------------------------ | -------------------------- |
+| CI Pipeline | `.github/workflows/ci.yml`     | PRs + push to main/develop |
+| Deploy      | `.github/workflows/deploy.yml` | Push to main               |
 
 ### CI Pipeline Steps
 
@@ -377,6 +379,7 @@ npm run deploy:ghpages
 3. Every push to `main` triggers automatic build and deploy
 
 **Key details:**
+
 - Uses **PathLocationStrategy** (clean URLs)
 - Deep links work via `404.html` fallback (copy of `index.html`)
 - API URL is configurable at runtime via `assets/config.json` (no rebuild needed)
@@ -419,26 +422,31 @@ EXPOSE 80
 
 ## Path Aliases
 
-| Alias          | Maps To                   |
-| -------------- | ------------------------- |
-| `@app/*`       | `src/app/*`               |
-| `@core/*`      | `src/app/core/*`          |
-| `@shared/*`    | `src/app/shared/*`        |
-| `@features/*`  | `src/app/features/*`      |
-| `@platform/*`  | `src/app/platform/*`      |
-| `@performance/*` | `src/app/performance/*` |
-| `@env`         | `src/environments/environment` |
+| Alias            | Maps To                        |
+| ---------------- | ------------------------------ |
+| `@app/*`         | `src/app/*`                    |
+| `@core/*`        | `src/app/core/*`               |
+| `@shared/*`      | `src/app/shared/*`             |
+| `@features/*`    | `src/app/features/*`           |
+| `@platform/*`    | `src/app/platform/*`           |
+| `@performance/*` | `src/app/performance/*`        |
+| `@env`           | `src/environments/environment` |
 
 ## Dependency Versions
 
-| Package                   | Version |
-| ------------------------- | ------- |
-| @angular/core             | ^20.0.0 |
-| @angular/material         | ^20.0.0 |
-| @angular/service-worker   | ^20.0.0 |
-| rxjs                      | ~7.8.0  |
-| typescript                | ~5.8.0  |
-| zone.js                   | ~0.15.0 |
+| Package                 | Version |
+| ----------------------- | ------- |
+| @angular/core           | ^20.0.0 |
+| @angular/material       | ^20.0.0 |
+| @angular/service-worker | ^20.0.0 |
+| rxjs                    | ~7.8.0  |
+| typescript              | ~5.8.0  |
+| zone.js                 | ~0.15.0 |
+
+## Badges
+
+![CI](https://github.com/dktoolwala/catalog/actions/workflows/ci.yml/badge.svg)
+![Deploy](https://github.com/dktoolwala/catalog/actions/workflows/deploy.yml/badge.svg)
 
 ## Badges
 ![CI](https://github.com/dktoolwala/catalog/actions/workflows/ci.yml/badge.svg)

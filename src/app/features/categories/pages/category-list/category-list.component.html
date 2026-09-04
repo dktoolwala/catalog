@@ -1,10 +1,5 @@
 <app-page-header title="Categories" subtitle="Browse products by category" />
 
-<!-- Loading -->
-@if (state.loading()) {
-  <app-loading-spinner />
-}
-
 <!-- Error -->
 @if (state.error() && !state.loading()) {
   <app-error-state (retry)="onRetry()" />

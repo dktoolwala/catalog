@@ -8,10 +8,10 @@
  * Navigation items are defined as a readonly array — no HTTP calls needed.
  */
 
-import { Component, ChangeDetectionStrategy, output } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatNavList, MatListItem } from '@angular/material/list';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { MatListItem, MatNavList } from '@angular/material/list';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { ROUTE_URLS } from '../../core/constants';
 
@@ -36,8 +36,8 @@ export class NavigationComponent {
 
   protected readonly navItems: readonly NavItem[] = [
     { path: ROUTE_URLS.HOME, label: 'Home', icon: 'home', exact: true },
-    { path: ROUTE_URLS.PRODUCTS, label: 'Products', icon: 'inventory_2', exact: false },
     { path: ROUTE_URLS.CATEGORIES, label: 'Categories', icon: 'category', exact: false },
+    { path: ROUTE_URLS.PRODUCTS, label: 'Products', icon: 'inventory_2', exact: false },
     { path: ROUTE_URLS.SEARCH, label: 'Search', icon: 'search', exact: false }
   ];
 }

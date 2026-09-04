@@ -9,7 +9,7 @@
  * No service injection.
  */
 
-import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 import { type Product } from '../../../../core/models';
@@ -27,6 +27,9 @@ import { ProductImageComponent } from '../product-image/product-image.component'
 export class ProductCardComponent {
   /** The product to display */
   readonly product = input.required<Product>();
+
+  /** Whether to display the product price */
+  readonly showPrice = input<boolean>(true);
 
   /** Emitted when the user clicks/activates the card */
   readonly viewClicked = output<Product>();
